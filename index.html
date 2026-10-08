@@ -3,91 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>உண்மை குரல் - Tamil</title>
+<title>STAR MOBILE - Didwana</title>
 <style>
 body{margin:0;background:#fbead2;font-family:Arial}
 .header{background:#6b0e0e;color:white;text-align:center;padding:20px 15px 45px;position:relative}
-.header h1{margin:0;font-size:32px;letter-spacing:2px}
-.header p{margin:5px 0;font-size:18px}
-.menu-btn{position:absolute;left:15px;top:90px;background:black;color:white;padding:8px 12px;border-radius:6px;font-size:22px}
-.search-box{background:white;max-width:350px;margin:0 auto;padding:12px 15px;border-radius:6px;display:flex;box-shadow:0 4px 10px rgba(0,0,0,0.3);position:absolute;left:50%;transform:translateX(-25%);bottom:-22px;width:65%}
-.search-box input{border:none;width:100%;outline:none}
-.badge{background:#7a1a1a;color:white;padding:8px 15px;border-radius:4px;display:inline-block;margin-top:45px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:20px 10px;max-width:500px;margin:0 auto}
-.card{background:#000;border:3px solid #000;border-radius:5px;overflow:hidden;text-align:center;cursor:pointer}
-.card img{width:100%;height:170px;object-fit:cover}
-.card-title{background:black;color:white;padding:10px;font-weight:bold}
-.page{display:none}
-.page.active{display:block}
-.article-img{width:100%;height:200px;object-fit:cover}
-.content{background:#fff8e7;border:2px solid #333;margin:15px 10px;border-radius:6px;padding:15px;line-height:1.8}
-.back-btn{background:#6b0e0e;color:white;padding:8px 15px;border:none;border-radius:5px;margin:10px;cursor:pointer}
+.header h1{margin:0;font-size:30px;letter-spacing:1px}
+.header p{font-size:14px;margin:5px;letter-spacing:1px}
+.menu{position:absolute;left:15px;top:92px;background:black;color:white;padding:8px 12px;border-radius:6px}
+.search{background:white;max-width:320px;margin:0 auto;padding:12px;border-radius:6px;display:flex;position:absolute;left:50%;transform:translateX(-25%);bottom:-22px;width:65%;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.search input{border:none;width:100%;outline:none}
+.badge{background:#7a1a1a;color:white;padding:7px 14px;border-radius:20px;display:inline-block;margin-top:45px;font-size:12px;margin-right:5px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 10px;max-width:600px;margin:auto}
+.card{background:#000;border:3px solid #000;border-radius:8px;overflow:hidden;text-align:center;cursor:pointer}
+.card img{width:100%;height:150px;object-fit:cover}
+.card-title{background:black;color:white;padding:8px;font-size:13px;font-weight:bold}
+.card-price{color:#ffbe0b;font-size:11px}
+.page{display:none}.page.active{display:block}
+.top-bar{background:#6b0e0e;color:white;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
+.detail-img{width:100%;height:260px;object-fit:cover}
+.box{background:#fff8e7;margin:10px;padding:15px;border-radius:8px;border:1px solid #ccc;line-height:1.7}
+.btn{width:100%;padding:13px;border:none;border-radius:8px;font-weight:bold;margin-top:8px;cursor:pointer;font-size:15px}
+.btn-green{background:#25D366;color:white}
+.btn-red{background:#6b0e0e;color:white}
+.btn-black{background:black;color:white}
+.back{background:#333;color:white;padding:8px 15px;border:none;border-radius:5px;margin:10px}
+.cart-count{background:white;color:#6b0e0e;padding:5px 12px;border-radius:20px;font-weight:bold;font-size:13px}
 </style>
 </head>
 <body>
 
 <div id="home" class="page active">
 <div class="header">
-<h1>MAIL OF ISLAM</h1>
-<p>Knowledge & Wisdom</p>
-<div class="menu-btn">☰</div>
-<div class="search-box">🔍 <input type="text" placeholder="  ENHANCED BY  Google"></div>
+<h1>⭐ STAR MOBILE</h1>
+<p>Didwana | Mobiles & Islamic Bazaar</p>
+<div class="menu">☰</div>
+<div class="search">🔍 <input placeholder="  Search Products"></div>
 </div>
-<div style="text-align:center"><div class="badge">☐ பகுதிகள்</div></div>
+<div style="text-align:center">
+<div class="badge">🕌 ISLAMIC</div>
+<div class="badge" style="background:#d90429">📰 NEWS</div>
+<div class="badge" style="background:#008000">📱 MOBILES</div>
+</div>
 
 <div class="grid">
-<div class="card" onclick="openPage('allah')">
-<img src="https://w0.peakpx.com/wallpaper/974/22/HD-wallpaper-allah-god-islamic.jpg" alt="Allah">
-<div class="card-title">அல்லாஹ்</div>
+<div class="card" onclick="openPage('allah')"><img src="https://w0.peakpx.com/wallpaper/974/22/HD-wallpaper-allah-god-islamic.jpg"><div class="card-title">அல்லாஹ்</div></div>
+<div class="card" onclick="openPage('nabi')"><img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400"><div class="card-title">முஹம்மத் நபி ﷺ</div></div>
+<div class="card" onclick="openPage('news')"><img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400"><div class="card-title">World News <div class="card-price">BREAKING</div></div></div>
+<div class="card" onclick="openPage('p1')"><img src="https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?w=400"><div class="card-title">Smart Phone - ₹12,999<div class="card-price">STAR MOBILE</div></div></div>
+<div class="card" onclick="openPage('p2')"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"><div class="card-title">AirPods Pro - ₹1,499</div></div>
+<div class="card" onclick="openPage('p3')"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"><div class="card-title">Watch - ₹1,999</div></div>
+<div class="card" onclick="openPage('p4')"><img src="https://images.unsplash.com/photo-1584305574647-0cc949a2bb9f?w=400"><div class="card-title">Attar - ₹399</div></div>
+<div class="card" onclick="openPage('p5')"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400"><div class="card-title">Thobe - ₹1,499</div></div>
 </div>
-<div class="card" onclick="openPage('nabi')">
-<img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400" alt="Nabi">
-<div class="card-title">முஹம்மத் நபி ﷺ</div>
-</div>
-<div class="card" onclick="openPage('kaba')">
-<img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=400" alt="Kaba">
-<div class="card-title">மக்கா - மதீனா</div>
-</div>
-<div class="card" onclick="openPage('quran')">
-<img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb2cd9?w=400" alt="Quran">
-<div class="card-title">திருக்குர்ஆன்</div>
-</div>
+<div style="text-align:center;padding:20px;background:black;color:white;margin-top:10px">
+<p>📍 STAR MOBILE, Didwana<br>📞 6381236842<br>WhatsApp Order Available</p>
 </div>
 </div>
 
-<!-- ALLAH ARTICLE -->
+<!-- ALLAH -->
 <div id="allah" class="page">
-<button class="back-btn" onclick="openPage('home')">← Back</button>
-<div class="header" style="padding:15px"><h1>தமிழ் பகுதி - அல்லாஹ்</h1></div>
-<img class="article-img" src="https://img.freepik.com/premium-vector/allah-arabic-calligraphy-with-lanterns_999616-2240.jpg?w=600" alt="Allah">
-<div class="content">
-<h2>அல்லாஹ்</h2>
-<p>அல்லாஹ் என்பது இறைவனுக்கு சொல்லப்படும் தனித்த அரபு சொல்லாகும். முஸ்லிம்கள் இறைவனை அல்லாஹ் என்றே அழைப்பர்.</p>
-<p>அல்லாஹ் ஒருவன். அவன் சர்வ சக்தன். சர்வ ஞானமும் கொண்டவன். சகலவற்றையும் படைத்தவன், பரிபாலிப்பவன்.</p>
-<p><b>அல்லாஹ் பற்றிய நம்பிக்கை:</b><br>
-1. அல்லாஹ் ஒருவன்<br>
-2. அவனுக்கு இணை இல்லை<br>
-3. அவன் தான் படைத்தவன்</p>
+<div class="top-bar"><span>STAR MOBILE - ISLAM</span><span class="cart-count" onclick="goHome()">HOME</span></div>
+<button class="back" onclick="goHome()">← Back</button>
+<img class="detail-img" src="https://img.freepik.com/premium-vector/allah-arabic-calligraphy-with-lanterns_999616-2240.jpg?w=600">
+<div class="box"><h2>அல்லாஹ்</h2><p>அல்லாஹ் ஒருவன். அவன் தான் எல்லாம் படைத்தவன். STAR MOBILE sarbaga vazhthukkal.</p><button class="btn btn-black" onclick="goHome()">Back to Shop</button></div>
+</div>
+
+<!-- PRODUCT 1 -->
+<div id="p1" class="page">
+<div class="top-bar"><span>⭐ STAR MOBILE</span><span class="cart-count">6381236842</span></div>
+<button class="back" onclick="goHome()">← Back</button>
+<img class="detail-img" src="https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?w=600">
+<div class="box">
+<h2>Redmi Note 13 - 8/128GB</h2>
+<p style="color:#d90429;font-weight:bold;font-size:22px">₹12,999 <span style="color:gray;font-size:14px;text-decoration:line-through">₹15,999</span></p>
+<p>✅ Original Seal Pack<br>✅ 1 Year Warranty<br>✅ Free Delivery in Didwana<br>✅ Cash on Delivery</p>
+<button class="btn btn-red" onclick="addCart()">Add to Cart</button>
+<button class="btn btn-green" onclick="waOrder('Redmi Note 13 - ₹12,999')">📱 WhatsApp Order - 6381236842</button>
+<button class="btn btn-black" onclick="callNow()">📞 Call Now</button>
 </div>
 </div>
 
-<!-- NABI ARTICLE -->
-<div id="nabi" class="page">
-<button class="back-btn" onclick="openPage('home')">← Back</button>
-<div class="header" style="padding:15px"><h1>முஹம்மத் நபி ﷺ</h1></div>
-<img class="article-img" src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600" alt="Nabi">
-<div class="content">
-<h2>முஹம்மத் நபி ﷺ வரலாறு</h2>
-<p>முஹம்மத் நபி (ஸல்) அவர்கள் இறுதி தூதர். மக்காவில் பிறந்து மதீனாவில் வாழ்ந்தார்கள். அல்லாஹ்வின் தூதை மக்களுக்கு எடுத்துரைத்தார்கள்.</p>
+<!-- PRODUCT 2 SAMPLE -->
+<div id="p2" class="page">
+<div class="top-bar"><span>⭐ STAR MOBILE</span><span class="cart-count">6381236842</span></div>
+<button class="back" onclick="goHome()">← Back</button>
+<img class="detail-img" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600">
+<div class="box">
+<h2>AirPods Pro 2nd Gen</h2>
+<p style="color:#d90429;font-weight:bold;font-size:22px">₹1,499</p>
+<p>Original Quality. Best Sound. STAR MOBILE Didwana.</p>
+<button class="btn btn-green" onclick="waOrder('AirPods Pro - ₹1,499')">📱 WhatsApp Order</button>
 </div>
 </div>
 
 <script>
-function openPage(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo(0,0);
-}
+function openPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function goHome(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('home').classList.add('active')}
+function addCart(){alert('Added to Cart da Machi! ⭐')}
+function waOrder(item){let msg=`Assalamu Alaikum STAR MOBILE, Enakku ${item} venum. Didwana delivery irukka?`;window.open(`https://wa.me/916381236842?text=${encodeURIComponent(msg)}`,'_blank')}
+function callNow(){window.open('tel:6381236842','_self')}
 </script>
 
 </body>
