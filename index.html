@@ -3,36 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAR MOBILE - Didwana</title>
+<title>STAR MOBILE - Cashback 1%</title>
 <style>
 body{margin:0;font-family:Arial;background:#fff8e1;text-align:center}
-.top{background:black;color:white;padding:6px;font-size:12px}
+.top{background:black;color:white;padding:8px;font-size:13px;display:flex;justify-content:space-between;padding-left:15px;padding-right:15px}
+.wallet{background:#25D366;color:white;padding:12px;border-radius:10px;margin:10px;font-weight:bold;font-size:16px}
 .h{background:#6b0e0e;color:white;padding:25px}
-.h h1{margin:0;font-size:32px}
-.card{background:white;margin:15px;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.btn{background:#25D366;color:white;border:none;padding:12px 20px;border-radius:25px;font-weight:bold;width:90%;font-size:15px}
+.h h1{margin:0;font-size:30px}
+.card{background:white;margin:12px;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.btn{border:none;padding:12px 20px;border-radius:25px;font-weight:bold;width:90%;font-size:14px;margin:5px;cursor:pointer}
+.buy{background:#6b0e0e;color:white}
+.withdraw{background:#ff9800;color:white}
+.small{font-size:12px;color:gray;margin-top:8px}
 </style>
 </head>
 <body>
-<div class="top">Free Delivery Didwana | 6381236842</div>
+
+<div class="top">
+<span>⭐ STAR MOBILE</span>
+<span id="userBal">Wallet: ₹0</span>
+</div>
+
 <div class="h">
-<h1>⭐ STAR MOBILE</h1>
-<p>Didwana No.1 Shop - Sayeed</p>
+<h1>STAR MOBILE</h1>
+<p>Didwana | Vanguna 1% Cashback!</p>
+</div>
+
+<div class="wallet" id="walletBox">
+💰 Un Wallet Balance: ₹<span id="balance">0</span>
+<br><span style="font-size:12px">Vanguna porul ku 1% cashback!</span>
 </div>
 
 <div class="card">
-<h3>📱 Redmi Note 13 Pro</h3>
-<p>Best Price - ₹12,999</p>
-<button class="btn" onclick="window.open('https://wa.me/916381236842?text=Hi STAR MOBILE, Redmi venum','_blank')">Order on WhatsApp</button>
+<h3>📱 Redmi Note 13 Pro - ₹12,999</h3>
+<p style="color:green">1% Cashback = ₹129</p>
+<button class="btn buy" onclick="buyProduct('Redmi Note 13 Pro',12999,129)">Vangu - 1% Add Aagum</button>
 </div>
 
 <div class="card">
-<h3>🎧 AirPods Pro</h3>
-<p>Best Price - ₹1,499</p>
-<button class="btn" onclick="window.open('https://wa.me/916381236842?text=Hi STAR MOBILE, AirPods venum','_blank')">Order on WhatsApp</button>
+<h3>🎧 AirPods Pro - ₹1,499</h3>
+<p style="color:green">1% Cashback = ₹14</p>
+<button class="btn buy" onclick="buyProduct('AirPods Pro',1499,14)">Vangu - 1% Add Aagum</button>
 </div>
 
-<p style="padding:20px;color:gray">📍 Main Market Didwana | 📞 6381236842</p>
+<div class="card">
+<h3>⌚ Smart Watch - ₹2,999</h3>
+<p style="color:green">1% Cashback = ₹29</p>
+<button class="btn buy" onclick="buyProduct('Smart Watch',2999,29)">Vangu - 1% Add Aagum</button>
+</div>
+
+<div class="card" style="background:#fff3e0;border:2px solid #ff9800">
+<h3>💸 Withdrawal Pannu</h3>
+<p>Wallet la irukkura amount ah edukkalam</p>
+<button class="btn withdraw" onclick="withdrawAmount()">💰 Withdrawal Request - ₹<span id="bal2">0</span></button>
+<p class="small">Minimum ₹50 iruntha than withdrawal mudiyum</p>
+<p id="withdrawMsg" style="color:green;font-weight:bold"></p>
+</div>
+
+<p class="small">📞 6381236842 | Main Market Didwana</p>
+
+<script>
+// Balance load pannu
+let balance = localStorage.getItem('star_balance') ? parseInt(localStorage.getItem('star_balance')) : 0;
+document.getElementById('balance').innerText = balance;
+document.getElementById('bal2').innerText = balance;
+document.getElementById('userBal').innerText = "Wallet: ₹" + balance;
+
+// Porul vangum function
+function buyProduct(name, price, cashback){
+  balance = balance + cashback;
+  localStorage.setItem('star_balance', balance);
+  document.getElementById('balance').innerText = balance;
+  document.getElementById('bal2').innerText = balance;
+  document.getElementById('userBal').innerText = "Wallet: ₹" + balance;
+  alert("Super da Machi! " + name + " vangitta! ₹" + cashback + " un wallet la add aayiduchu! Total: ₹" + balance);
+}
+
+// Withdrawal function
+function withdrawAmount(){
+  if(balance < 50){
+    alert("Machi Minimum ₹50 venum da! Ippo un kitta ₹" + balance + " than irukku. Innum porul vangu da!");
+    return;
+  }
+  document.getElementById('withdrawMsg').innerText = "✅ Withdrawal Request Send Aayiduchu! ₹" + balance + " - STAR MOBILE 2 hours la anuppuvanga!";
+  
+  // WhatsApp ku pogum
+  let msg = "Hi STAR MOBILE, En wallet la ₹" + balance + " irukku. Withdrawal pannanum. Account: 6381236842";
+  window.open("https://wa.me/916381236842?text=" + encodeURIComponent(msg), "_blank");
+  
+  // Balance zero aakum (withdrawal ku aprom)
+  // balance = 0; // Nee venumna itha on pannalam
+  // localStorage.setItem('star_balance', 0);
+}
+</script>
 
 </body>
 </html>
