@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADMIN - STAR MOBILE</title>
+<style>
+body{margin:0;font-family:Arial;background:#fff3e0;padding:15px}
+.card{background:white;padding:15px;border-radius:12px;margin:10px 0;box-shadow:0 2px 6px #ccc}
+.input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;margin:6px 0;box-sizing:border-box}
+.btn{border:none;padding:14px;border-radius:10px;font-weight:bold;width:100%;margin-top:8px;cursor:pointer}
+.btnBlue{background:#0d47a1;color:white}
+.btnGreen{background:#2e7d32;color:white}
+.btnRed{background:#d32f2f;color:white}
+</style>
+</head>
+<body>
+
+<div id="loginPage">
+<h2 style="text-align:center">🔐 ADMIN LOGIN - STAR MOBILE</h2>
+<div class="card">
+<p>Password Enter Pannu da Machi</p>
+<input id="pass" type="password" class="input" placeholder="Password">
+<button class="btn btnBlue" onclick="login()">Login</button>
+<p style="font-size:12px;color:gray">Password: STAR123</p>
+<a href="index.html"><button class="btn" style="background:gray;color:white">Back to Public Site</button></a>
+</div>
+</div>
+
+<div id="adminPage" style="display:none">
+<h2 style="text-align:center">👑 STAR MOBILE - ADMIN PANEL</h2>
+<p style="text-align:center">Nee mattum da Machi - Public ku theriyathu</p>
+
+<div class="card" style="border:2px solid #0d47a1">
+<h3>➕ Product Add Pannu da</h3>
+<input id="p_name" class="input" placeholder="Product Name - Ex: iPhone 15">
+<input id="p_price" class="input" type="number" placeholder="Price - Ex: 79999">
+<input id="p_fund" class="input" type="number" placeholder="Education Fund - Ex: 799">
+<input id="p_emoji" class="input" placeholder="Emoji - Ex: 📱 🎧 ⌚">
+<input id="p_image" class="input" placeholder="Image URL - https://... (Empty na auto)">
+<button class="btn btnGreen" onclick="addProduct()">✅ ADD PRODUCT - Public la Varum</button>
+</div>
+
+<div class="card">
+<h3>📦 Products List - <span id="count">0</span> Products</h3>
+<div id="list"></div>
+<button class="btn btnRed" onclick="clearAll()">🗑️ Full Delete</button>
+<a href="index.html"><button class="btn btnBlue">👀 Public Site Paaru</button></a>
+<button class="btn" style="background:black;color:white" onclick="logout()">Logout</button>
+</div>
+
+<div class="card" style="background:#e8f5e9">
+<p style="font-size:12px"><b>Note da Machi:</b><br>
+1. Inga add panna product direct ah public site (index.html) la varum da!<br>
+2. Ippo localStorage la save aaguthu - Un phone la add panna un phone la mattum theriyum<br>
+3. Ellarukkum theriyanumna Firebase venum - Adha venumna sollu da!</p>
+</div>
+</div>
+
+<script>
+let defaultProducts=[
+{name:"Redmi Note 13 Pro",price:12999,fund:129,emoji:"📱",image:"https://dummyimage.com/600x300/0d47a1/ffffff&text=Redmi+Note+13+Pro"},
+{name:"AirPods Pro",price:1499,fund:14,emoji:"🎧",image:"https://dummyimage.com/600x300/222222/ffffff&text=AirPods+Pro"},
+{name:"Smart Watch Ultra",price:2999,fund:29,emoji:"⌚",image:"https://dummyimage.com/600x300/000000/ffffff&text=Smart+Watch+Ultra"}
+];
+let products=JSON.parse(localStorage.getItem('sm_products')||'null')||defaultProducts;
+
+function login(){
+if(document.getElementById('pass').value==='STAR123'){
+localStorage.setItem('sm_admin','yes');
+document.getElementById('loginPage').style.display='none';
+document.getElementById('adminPage').style.display='block';
+render();
+}else alert('Password thappu da! STAR123 da!');
+}
+if(localStorage.getItem('sm_admin')==='yes'){document.getElementById('loginPage').style.display='none';document.getElementById('adminPage').style.display='block';render();}
+function logout(){localStorage.removeItem('sm_admin');location.reload();}
+function save(){localStorage.setItem('sm_products',JSON.stringify(products));render();}
+function render(){
+document.getElementById('count').innerText=products.length;
+let h='';products.forEach((p,i)=>{h+=`<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:8px"><div><b>${p.emoji} ${p.name}</b><br><small>₹${p.price} | Fund ₹${p.fund}</small></div><button onclick="del(${i})" style="background:red;color:white;border:none;padding:6px 12px;border-radius:8px">Delete</button></div>`});
+document.getElementById('list').innerHTML=h||'<p>Product illa da</p>';
+}
+function addProduct(){
+let name=document.getElementById('p_name').value.trim();
+let price=parseInt(document.getElementById('p_price').value);
+let fund=parseInt(document.getElementById('p_fund').value);
+let emoji=document.getElementById('p_emoji').value||'📱';
+let image=document.getElementById('p_image').value||`https://dummyimage.com/600x300/0d47a1/ffffff&text=${encodeURIComponent(name)}`;
+if(!name||!price||!fund){alert('Name Price Fund must da!');return;}
+products.push({name,price,fund,emoji,image});
+save();
+document.getElementById('p_name').value='';document.getElementById('p_price').value='';document.getElementById('p_fund').value='';document.getElementById('p_emoji').value='';document.getElementById('p_image').value='';
+alert(name+' Add Aayiduchu da! Public site la check pannu da! ✅');
+}
+function del(i){if(confirm('Delete pannava?')){products.splice(i,1);save();}}
+function clearAll(){if(confirm('Full delete pannava?')){products=[];save();}}
+</script>
+</body>
+</html>
