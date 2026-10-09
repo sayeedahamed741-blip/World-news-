@@ -3,98 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STAR MOBILE - Real Cashback</title>
+<title>STAR MOBILE - Full App</title>
 <style>
-body{margin:0;font-family:Arial;background:#fff8e1;text-align:center}
-.top{background:black;color:white;padding:10px;display:flex;justify-content:space-between;padding-left:15px;padding-right:15px}
-.wallet{background:#25D366;color:white;padding:12px;border-radius:10px;margin:10px;font-weight:bold}
-.h{background:#6b0e0e;color:white;padding:20px}
-.card{background:white;margin:12px;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.btn{border:none;padding:12px;width:90%;border-radius:25px;font-weight:bold;margin:5px;cursor:pointer}
-.buy{background:#6b0e0e;color:white}
-.pending{background:#fff3cd;padding:10px;border-radius:8px;margin-top:10px;border:1px dashed orange}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#f5f5f5;padding-bottom:80px}
+.topBar{background:white;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,0.1);position:sticky;top:0;z-index:100}
+.searchBox{border:1px solid #ddd;border-radius:20px;padding:6px 12px;width:55%;display:flex;align-items:center}
+.searchBox input{border:none;outline:none;width:100%;margin-left:5px}
+.page{display:none;padding:10px}
+.page.active{display:block}
+.h{background:#6b0e0e;color:white;padding:20px;text-align:center;border-radius:0 0 20px 20px}
+.card{background:white;margin:10px 0;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.btn{border:none;padding:12px;width:100%;border-radius:25px;font-weight:bold;cursor:pointer;margin-top:8px}
+.btnRed{background:#6b0e0e;color:white}
+.btnGreen{background:#25D366;color:white}
+.btnOrange{background:orange;color:white}
+.btnGray{background:#eee;color:black}
+.bottomNav{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:8px 0;box-shadow:0 -2px 10px rgba(0,0,0,0.1);z-index:100}
+.navItem{text-align:center;font-size:12px;color:gray;cursor:pointer;padding:5px 15px}
+.navItem.active{color:#6b0e0e;font-weight:bold}
+.inputBox{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:6px 0}
+.badge{background:#25D366;color:white;padding:3px 8px;border-radius:10px;font-size:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 </style>
 </head>
 <body>
 
-<div class="top">
-<span>⭐ STAR MOBILE</span>
-<span id="userBal">Wallet: ₹0</span>
+<!-- TOP SEARCH BAR -->
+<div class="topBar">
+<b>⭐ STAR MOBILE</b>
+<div class="searchBox">🔍 <input id="searchInput" placeholder="Search product..." onkeyup="searchProduct()"></div>
 </div>
 
-<div class="h">
-<h1>STAR MOBILE</h1>
-<p>Order Confirm Aana Piragu Than Cashback!</p>
-</div>
-
-<div class="wallet">💰 Wallet: ₹<span id="balance">0</span> | Pending: ₹<span id="pending">0</span></div>
-
-<div class="card">
-<h3>📱 Redmi Note 13 Pro - ₹12,999</h3>
-<p style="color:green">Cashback ₹129 (Confirm aana piragu)</p>
-<button class="btn buy" onclick="placeOrder('Redmi Note 13 Pro',12999,129)">Order Place Pannu</button>
-</div>
-
-<div class="card">
-<h3>🎧 AirPods Pro - ₹1,499</h3>
-<p style="color:green">Cashback ₹14 (Confirm aana piragu)</p>
-<button class="btn buy" onclick="placeOrder('AirPods Pro',1499,14)">Order Place Pannu</button>
-</div>
-
-<div id="myOrders" style="margin:12px"></div>
-
-<div class="card" style="background:#e8f5e9">
-<h3>👑 Admin Panel (Unakku Mattum)</h3>
-<p style="font-size:12px">Customer kasu kuduthuta inga Confirm pannu da Machi</p>
-<button class="btn" style="background:green;color:white" onclick="confirmAllOrders()">✅ Payment Vangiten - Cashback Add Pannu</button>
-</div>
-
-<script>
-let balance = parseInt(localStorage.getItem('star_balance')||0);
-let pendingCB = parseInt(localStorage.getItem('star_pending')||0);
-let orders = JSON.parse(localStorage.getItem('star_orders')||'[]');
-
-updateUI();
-
-function placeOrder(name,price,cb){
-  let order = {name:name, price:price, cashback:cb, status:'pending', time:new Date().toLocaleString()};
-  orders.push(order);
-  pendingCB += cb;
-  localStorage.setItem('star_orders', JSON.stringify(orders));
-  localStorage.setItem('star_pending', pendingCB);
-  
-  // WhatsApp order - un kitta varum
-  let msg = `New Order! ${name} - ₹${price}. Cashback ₹${cb}. Customer wallet: ₹${balance}. Please confirm payment.`;
-  window.open("https://wa.me/916381236842?text="+encodeURIComponent(msg), "_blank");
-  
-  updateUI();
-  alert("Order Place Aayiduchu da Machi! Nee kasu kuduthuta shop owner confirm panna piragu than ₹"+cb+" wallet la add aagum da!");
-}
-
-function confirmAllOrders(){
-  if(pendingCB==0){ alert("Pending ethuvum illa da Machi!"); return; }
-  balance += pendingCB;
-  localStorage.setItem('star_balance', balance);
-  pendingCB = 0;
-  localStorage.setItem('star_pending', 0);
-  orders.forEach(o=>{ if(o.status=='pending') o.status='confirmed'; });
-  localStorage.setItem('star_orders', JSON.stringify(orders));
-  updateUI();
-  alert("Super da! ₹"+balance+" wallet la add aayiduchu! Customer ku cashback poayiduchu!");
-}
-
-function updateUI(){
-  document.getElementById('balance').innerText = balance;
-  document.getElementById('pending').innerText = pendingCB;
-  document.getElementById('userBal').innerText = "Wallet: ₹"+balance;
-  
-  let html = "<h3>📦 En Orders</h3>";
-  if(orders.length==0) html+="<p style='font-size:12px;color:gray'>Innum order illa da</p>";
-  orders.slice(-3).reverse().forEach(o=>{
-    html+=`<div class="pending">${o.name} - ₹${o.price} | Cashback ₹${o.cashback} | Status: ${o.status} ${o.status=='pending'?'⏳':'✅'}</div>`;
-  });
-  document.getElementById('myOrders').innerHTML = html;
-}
-</script>
-</body>
-</html>
+<!-- 
