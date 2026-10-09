@@ -5,17 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STAR MOBILE</title>
 <style>
-body{margin:0;font-family:Arial;background:#f5f5f5;padding-bottom:80px}
+body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 .top{background:white;padding:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
 .top input{border:1px solid #ddd;border-radius:20px;padding:6px 10px;width:150px}
 .page{padding:10px}
-.header{background:#6b0e0e;color:white;padding:20px;text-align:center;border-radius:0 0 20px 20px}
-.card{background:white;margin:10px 0;padding:15px;border-radius:12px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
-.btn{background:#6b0e0e;color:white;border:none;padding:12px;width:100%;border-radius:25px;font-weight:bold;margin-top:8px}
+.header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:white;padding:25px;text-align:center;border-radius:0 0 25px 25px}
+.header h2{margin:0;font-size:22px}
+.header p{margin:8px 0 0 0;font-size:14px;opacity:0.9}
+.card{background:white;margin:12px 0;padding:12px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1)}
+.card img{width:100%;height:160px;object-fit:contain;border-radius:10px;background:#f9f9f9}
+.btnRow{display:flex;gap:8px;margin-top:10px}
+.btn{border:none;padding:12px;border-radius:25px;font-weight:bold;flex:1;cursor:pointer}
+.btnBuy{background:#2e7d32;color:white}
+.btnCart{background:#d32f2f;color:white}
 .bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #ddd}
 .nav{font-size:13px;color:gray;text-align:center}
-.nav.active{color:#6b0e0e;font-weight:bold}
+.nav.active{color:#0d47a1;font-weight:bold}
 .input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0;box-sizing:border-box}
+.badge{background:#e8f5e9;color:#2e7d32;padding:4px 8px;border-radius:10px;font-size:12px;font-weight:bold}
 </style>
 </head>
 <body>
@@ -28,27 +35,41 @@ body{margin:0;font-family:Arial;background:#f5f5f5;padding-bottom:80px}
 <!-- HOME -->
 <div id="home" class="page">
 <div class="header">
-<h2>Welcome Machi!</h2>
-<p>Wallet: ₹<span id="w1">0</span> | 1% Cashback</p>
+<h2>Welcome to STAR MOBILE</h2>
+<p>அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
+<p style="margin-top:10px;font-size:12px;opacity:0.8">Didwana | 6381236842</p>
 </div>
 
 <div class="card">
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400">
 <h3>📱 Redmi Note 13 Pro</h3>
-<p>₹12,999 | Cashback ₹129</p>
-<button class="btn" onclick="buyNow('Redmi Note 13 Pro',12999,129)">BUY NOW</button>
+<p>₹12,999 | <span class="badge">📚 Education Fund ₹129</span></p>
+<div class="btnRow">
+<button class="btn btnBuy" onclick="buyNow('Redmi Note 13 Pro',12999,129)">BUY NOW</button>
+<button class="btn btnCart" onclick="addCart('Redmi Note 13 Pro',12999,129)">ADD CART</button>
+</div>
 </div>
 
 <div class="card">
+<img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400">
 <h3>🎧 AirPods Pro</h3>
-<p>₹1,499 | Cashback ₹14</p>
-<button class="btn" onclick="buyNow('AirPods Pro',1499,14)">BUY NOW</button>
+<p>₹1,499 | <span class="badge">📚 Education Fund ₹14</span></p>
+<div class="btnRow">
+<button class="btn btnBuy" onclick="buyNow('AirPods Pro',1499,14)">BUY NOW</button>
+<button class="btn btnCart" onclick="addCart('AirPods Pro',1499,14)">ADD CART</button>
+</div>
 </div>
 
 <div class="card">
-<h3>⌚ Smart Watch</h3>
-<p>₹2,999 | Cashback ₹29</p>
-<button class="btn" onclick="buyNow('Smart Watch',2999,29)">BUY NOW</button>
+<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400">
+<h3>⌚ Smart Watch Ultra</h3>
+<p>₹2,999 | <span class="badge">📚 Education Fund ₹29</span></p>
+<div class="btnRow">
+<button class="btn btnBuy" onclick="buyNow('Smart Watch Ultra',2999,29)">BUY NOW</button>
+<button class="btn btnCart" onclick="addCart('Smart Watch Ultra',2999,29)">ADD CART</button>
 </div>
+</div>
+
 </div>
 
 <!-- ORDER -->
@@ -59,44 +80,34 @@ body{margin:0;font-family:Arial;background:#f5f5f5;padding-bottom:80px}
 
 <!-- CART -->
 <div id="cart" class="page" style="display:none">
-<div class="header"><h2>🛒 Cart</h2></div>
+<div class="header"><h2>🛒 My Cart</h2></div>
 <div id="cartBox">Cart empty da Machi</div>
+<button id="cartBuyBtn" class="btn btnBuy" style="display:none;margin-top:10px" onclick="buyFromCart()">Cart la irunthu Buy Pannu</button>
 </div>
 
 <!-- PROFILE -->
 <div id="profile" class="page" style="display:none">
-<div class="header"><h2>👤 Profile</h2><p id="pHi">Hi Machi</p></div>
-
-<div class="card" onclick="showBal()">
-<b>💰 My Balance - ₹<span id="w2">0</span></b><br><small>Tap to open</small>
-</div>
-
-<div class="card" onclick="showAddressPage()">
-<b>📍 My Address</b><br><small id="addrMini">Add pannu da Machi</small>
-</div>
-
-<div class="card" onclick="alert('Referral Code: STAR100 - Share pannu da Machi!')">
-<b>👥 Referral</b><br><small>Share panni kasu sampathu</small>
-</div>
-
+<div class="header"><h2>👤 Profile</h2><p id="pHi">Welcome Machi!</p><p>Education Fund: ₹<span id="wTop">0</span></p></div>
+<div class="card" onclick="showBal()"><b>📚 My Education Fund - ₹<span id="w2">0</span></b><br><small>Tap pannu</small></div>
+<div class="card" onclick="showAddressPage()"><b>📍 My Address</b><br><small id="addrMini">Address add pannu da</small></div>
+<div class="card" onclick="alert('Referral Code: STAR100')"><b>👥 Referral</b></div>
 <div id="balanceDetail" style="display:none" class="card">
-<h3>💰 Wallet: ₹<span id="w3">0</span></h3>
-<p style="font-size:13px">1% add aagum da<br>Withdrawal: June month mattum, 1 year ku 1 time, Min ₹100</p>
+<h3>📚 Education Fund: ₹<span id="w3">0</span></h3>
+<p style="font-size:13px">Porul vanguna 1% Education Fund la add aagum da Machi! Padikkira pullainga ku use aagum!</p>
+<p style="font-size:13px;margin-top:8px"><b>Rule:</b> June la mattum edukalam, 1 year ku 1 time, Min ₹100</p>
 <p id="withdrawMsg" style="font-weight:bold;color:green"></p>
-<button class="btn" style="background:orange" onclick="withdraw()">Withdrawal Request</button>
+<button class="btn btnBuy" style="background:orange" onclick="withdraw()">Fund Withdrawal</button>
 </div>
-
 <div id="addressDetail" style="display:none" class="card">
-<h3>📍 Address</h3>
+<h3>Address</h3>
 <input id="a_name" class="input" placeholder="Full Name">
 <input id="a_phone" class="input" placeholder="Phone Number">
 <input id="a_door" class="input" placeholder="Door Number">
 <input id="a_pin" class="input" placeholder="Pin Code">
 <input id="a_street" class="input" placeholder="Street">
 <input id="a_city" class="input" placeholder="City">
-<button class="btn" onclick="saveAddr()">Save Address</button>
+<button class="btn btnBuy" onclick="saveAddr()">Save</button>
 </div>
-
 </div>
 
 <!-- BUY CONFIRM -->
@@ -104,120 +115,4 @@ body{margin:0;font-family:Arial;background:#f5f5f5;padding-bottom:80px}
 <div class="header"><h2>Confirm Buy</h2></div>
 <div class="card">
 <h3 id="bName">Product</h3>
-<p>Price ₹<span id="bPrice">0</span> | Cashback ₹<span id="bCB">0</span></p>
-<div id="bAddr" style="background:#fff8e1;padding:10px;border-radius:8px;font-size:13px;margin:10px 0"></div>
-<div class="card" style="border:2px solid green" onclick="finalBuy('COD')"><b>💵 Cash On Delivery</b></div>
-<div class="card" style="border:2px solid blue" onclick="finalBuy('Online')"><b>💳 Online Payment</b></div>
-<button class="btn" style="background:gray" onclick="goPage('home')">Cancel</button>
-</div>
-</div>
-
-<!-- BOTTOM MENU -->
-<div class="bottom">
-<div class="nav active" id="nHome" onclick="goPage('home')">🏠<br>Home</div>
-<div class="nav" id="nOrder" onclick="goPage('order')">📦<br>Order</div>
-<div class="nav" id="nCart" onclick="goPage('cart')">🛒<br>Cart</div>
-<div class="nav" id="nProfile" onclick="goPage('profile')">👤<br>Profile</div>
-</div>
-
-<script>
-let wallet=parseInt(localStorage.getItem('sm_w')||0);
-let orders=JSON.parse(localStorage.getItem('sm_o')||'[]');
-let addr=JSON.parse(localStorage.getItem('sm_a')||'null');
-let wYear=localStorage.getItem('sm_wy')||'';
-let cur=null;
-
-function goPage(id){
-document.getElementById('home').style.display='none';
-document.getElementById('order').style.display='none';
-document.getElementById('cart').style.display='none';
-document.getElementById('profile').style.display='none';
-document.getElementById('buyConfirm').style.display='none';
-document.getElementById(id).style.display='block';
-document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
-if(id=='home') document.getElementById('nHome').classList.add('active');
-if(id=='order') {document.getElementById('nOrder').classList.add('active'); showOrders();}
-if(id=='cart') {document.getElementById('nCart').classList.add('active'); showOrders();}
-if(id=='profile') document.getElementById('nProfile').classList.add('active');
-update();
-}
-
-function update(){
-document.getElementById('w1').innerText=wallet;
-document.getElementById('w2').innerText=wallet;
-document.getElementById('w3').innerText=wallet;
-if(addr){
-document.getElementById('addrMini').innerText=addr.door+', '+addr.city;
-document.getElementById('pHi').innerText='Hi '+addr.name;
-document.getElementById('a_name').value=addr.name;
-document.getElementById('a_phone').value=addr.phone;
-document.getElementById('a_door').value=addr.door;
-document.getElementById('a_pin').value=addr.pincode;
-document.getElementById('a_street').value=addr.street;
-document.getElementById('a_city').value=addr.city;
-}
-let m=new Date().getMonth()+1; let y=new Date().getFullYear();
-let msg=document.getElementById('withdrawMsg');
-if(wYear==y) msg.innerText='❌ '+y+' la 1 time eduthitta da! Adutha varusham than!';
-else if(m!=6) msg.innerText='⏳ Ippo month '+m+' da. June (6) la mattum withdrawal mudiyum!';
-else msg.innerText='✅ June da! Withdraw pannalam da!';
-}
-
-function searchFun(){
-let q=document.getElementById('search').value.toLowerCase();
-let cards=document.querySelectorAll('#home .card');
-cards.forEach(c=>{
-let t=c.innerText.toLowerCase();
-c.style.display=t.includes(q)?'block':'none';
-});
-}
-
-function buyNow(name,price,cb){
-if(!addr){ alert('Mudhala address add pannu da Machi!'); goPage('profile'); showAddressPage(); return; }
-cur={name,price,cb};
-document.getElementById('bName').innerText=name;
-document.getElementById('bPrice').innerText=price;
-document.getElementById('bCB').innerText=cb;
-document.getElementById('bAddr').innerHTML=addr.name+'<br>'+addr.door+', '+addr.street+', '+addr.city+' - '+addr.pincode+'<br>📱'+addr.phone;
-goPage('buyConfirm');
-}
-
-function showBal(){ document.getElementById('balanceDetail').style.display='block'; document.getElementById('addressDetail').style.display='none'; }
-function showAddressPage(){ document.getElementById('addressDetail').style.display='block'; document.getElementById('balanceDetail').style.display='none'; }
-
-function saveAddr(){
-let o={name:document.getElementById('a_name').value, phone:document.getElementById('a_phone').value, door:document.getElementById('a_door').value, pincode:document.getElementById('a_pin').value, street:document.getElementById('a_street').value, city:document.getElementById('a_city').value};
-if(!o.name||!o.phone){ alert('Name phone podu da!'); return; }
-addr=o; localStorage.setItem('sm_a',JSON.stringify(o)); alert('Save aayiduchu da Machi! ✅'); update();
-}
-
-function finalBuy(type){
-wallet+=cur.cb; localStorage.setItem('sm_w',wallet);
-orders.push({name:cur.name, price:cur.price, cb:cur.cb, type:type, date:new Date().toLocaleDateString()});
-localStorage.setItem('sm_o',JSON.stringify(orders));
-window.open('https://wa.me/916381236842?text=Order:'+cur.name+' ₹'+cur.price+' '+type+' Cashback ₹'+cur.cb,'_blank');
-alert('Order Success da! ₹'+cur.cb+' wallet la add aayiduchu da!'); goPage('order');
-}
-
-function showOrders(){
-let h=''; if(orders.length==0) h='<p style="text-align:center;color:gray;margin-top:20px">Order illa da Machi</p>';
-else orders.slice().reverse().forEach(o=>{ h+=`<div class="card">📱 ${o.name}<br>₹${o.price} | ${o.type} | <b style="color:green">+₹${o.cb}</b><br><small>${o.date}</small></div>`; });
-document.getElementById('orderBox').innerHTML=h;
-document.getElementById('cartBox').innerHTML=h;
-}
-
-function withdraw(){
-let m=new Date().getMonth()+1; let y=new Date().getFullYear();
-if(wallet<100){ alert('Min ₹100 venum da! Un kitta ₹'+wallet); return; }
-if(wYear==y){ alert(y+' la already pannitta da!'); return; }
-if(m!=6){ alert('June la mattum than da Machi! Ippo '+m+' month!'); return; }
-localStorage.setItem('sm_wy',y);
-window.open('https://wa.me/916381236842?text=Withdrawal ₹'+wallet+' - '+(addr?addr.phone:''),'_blank');
-alert('Withdrawal Send aayiduchu da!'); wallet=0; localStorage.setItem('sm_w',0); update();
-}
-
-update();
-showOrders();
-</script>
-</body>
-</html>
+<p>Price ₹<span id="bPrice">0</span> | 📚 Fund
