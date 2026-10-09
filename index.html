@@ -5,44 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STAR MOBILE</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:100px}
-.top{background:white;padding:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
-.top input{border:1px solid #ddd;border-radius:20px;padding:6px 10px;width:140px}
-.page{padding:10px}
+body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:160px}
+.top{background:white;padding:12px;text-align:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
+.page{padding:10px;display:none}
+#home{display:block}
 .header{background:#0d47a1;color:white;padding:20px;text-align:center;border-radius:0 0 20px 20px}
-.card{background:white;margin:12px 0;padding:12px;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.card img{width:100%;height:180px;object-fit:contain;background:white;border-radius:10px;display:block}
-.btnRow{display:flex;gap:8px;margin-top:10px}
-.btn{border:none;padding:13px;border-radius:25px;font-weight:bold;flex:1;font-size:14px}
+.card{background:white;margin:10px 0;padding:12px;border-radius:12px;box-shadow:0 2px 6px #ccc}
+.btnRow{display:flex;gap:8px;margin-top:8px}
+.btn{border:none;padding:12px;border-radius:25px;font-weight:bold;flex:1}
 .btnBuy{background:#2e7d32;color:white}
 .btnCart{background:#d32f2f;color:white}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 15px 0;border-top:3px solid #0d47a1;z-index:9999;box-shadow:0 -2px 10px rgba(0,0,0,0.2)}
-.nav{font-size:12px;color:gray;text-align:center;padding:5px 15px;border-radius:10px}
-.nav.active{color:#0d47a1;background:#e3f2fd;font-weight:bold}
+
+/* KILA MENU - PERUSA SIMPLE AH DA MACHI */
+.bottomNav{
+position:fixed;bottom:0;left:0;right:0;
+background:#ffffff;
+display:flex;justify-content:space-around;
+padding:12px 0;
+border-top:4px solid #0d47a1;
+z-index:999999;
+box-shadow:0 -3px 15px rgba(0,0,0,0.3);
+}
+.bItem{
+text-align:center;
+font-size:13px;
+color:#666;
+padding:8px 12px;
+border-radius:12px;
+font-weight:bold;
+}
+.bItem.active{background:#0d47a1;color:white}
+.badge{background:#e8f5e9;color:#2e7d32;padding:3px 6px;border-radius:6px;font-size:11px}
 .input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0}
-.badge{background:#e8f5e9;color:#2e7d32;padding:4px 8px;border-radius:8px;font-size:12px;font-weight:bold}
-.profileBtn{background:white;margin:10px 0;padding:18px;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;justify-content:space-between;align-items:center;border-left:5px solid #0d47a1}
 </style>
 </head>
 <body>
 
 <div class="top">
-<b>⭐ STAR MOBILE</b>
-<input id="search" placeholder="🔍 Search..." onkeyup="searchFun()">
+<b style="font-size:18px">⭐ STAR MOBILE</b>
+<div style="margin-top:8px"><input id="search" style="width:90%;padding:8px;border-radius:20px;border:1px solid #ccc" placeholder="🔍 Search..." onkeyup="searchFun()"></div>
 </div>
 
+<!-- HOME PAGE -->
 <div id="home" class="page">
 <div class="header">
 <h2>Welcome to STAR MOBILE</h2>
-<p style="font-size:13px;margin-top:6px">அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
-<p style="font-size:11px;margin-top:8px;opacity:0.8">📚 Education Fund 1%</p>
+<p style="font-size:13px">அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
 </div>
 
 <div class="card">
-<img src="https://i.ibb.co/0jq7y1t/redmi.png" onerror="this.src='https://via.placeholder.com/300x180?text=Redmi+Note+13+Pro'">
-<h3>📱 Redmi Note 13 Pro</h3>
-<p>₹12,999 | <span class="badge">📚 Education Fund ₹129</span></p>
+<img src="https://dummyimage.com/600x300/0d47a1/ffffff&text=Redmi+Note+13+Pro" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+<h3>📱 Redmi Note 13 Pro - ₹12,999 <span class="badge">📚 Fund ₹129</span></h3>
 <div class="btnRow">
 <button class="btn btnBuy" onclick="buyNow('Redmi Note 13 Pro',12999,129)">BUY NOW</button>
 <button class="btn btnCart" onclick="addCart('Redmi Note 13 Pro',12999,129)">ADD CART</button>
@@ -50,9 +63,8 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:100px}
 </div>
 
 <div class="card">
-<img src="https://i.ibb.co/5W8x0dS/airpods.png" onerror="this.src='https://via.placeholder.com/300x180?text=AirPods+Pro'">
-<h3>🎧 AirPods Pro</h3>
-<p>₹1,499 | <span class="badge">📚 Education Fund ₹14</span></p>
+<img src="https://dummyimage.com/600x300/111111/ffffff&text=AirPods+Pro" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+<h3>🎧 AirPods Pro - ₹1,499 <span class="badge">📚 Fund ₹14</span></h3>
 <div class="btnRow">
 <button class="btn btnBuy" onclick="buyNow('AirPods Pro',1499,14)">BUY NOW</button>
 <button class="btn btnCart" onclick="addCart('AirPods Pro',1499,14)">ADD CART</button>
@@ -60,31 +72,42 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:100px}
 </div>
 
 <div class="card">
-<img src="https://i.ibb.co/0jH6bW3/watch.png" onerror="this.src='https://via.placeholder.com/300x180?text=Smart+Watch+Ultra'">
-<h3>⌚ Smart Watch Ultra</h3>
-<p>₹2,999 | <span class="badge">📚 Education Fund ₹29</span></p>
+<img src="https://dummyimage.com/600x300/333333/ffffff&text=Smart+Watch" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
+<h3>⌚ Smart Watch Ultra - ₹2,999 <span class="badge">📚 Fund ₹29</span></h3>
 <div class="btnRow">
 <button class="btn btnBuy" onclick="buyNow('Smart Watch Ultra',2999,29)">BUY NOW</button>
 <button class="btn btnCart" onclick="addCart('Smart Watch Ultra',2999,29)">ADD CART</button>
 </div>
 </div>
-
 </div>
 
-<div id="order" class="page" style="display:none">
+<!-- ORDER PAGE - SIMPLE -->
+<div id="order" class="page">
 <div class="header"><h2>📦 My Orders</h2></div>
-<div id="orderBox" style="margin-top:10px"></div>
+<div id="orderBox">Order illa da Machi</div>
 </div>
 
-<div id="cart" class="page" style="display:none">
-<div class="header"><h2>🛒 My Cart</h2></div>
-<div id="cartBox" style="margin-top:10px">Cart empty da Machi</div>
-<button id="cartBuyBtn" class="btn btnBuy" style="display:none;margin-top:15px;width:100%;padding:15px" onclick="buyFromCart()">CART BUY</button>
+<!-- CART PAGE - SIMPLE -->
+<div id="cart" class="page">
+<div class="header"><h2>🛒 My Cart - Add Card</h2></div>
+<div id="cartBox">Cart empty da Machi</div>
+<button id="cartBuyBtn" class="btn btnBuy" style="display:none;width:100%;margin-top:10px;padding:15px" onclick="buyFromCart()">CART BUY NOW</button>
 </div>
 
-<div id="profile" class="page" style="display:none">
-<div class="header"><h2>👤 My Profile</h2><p id="pHi">Hi Machi!</p><p style="background:white;color:#0d47a1;display:inline-block;padding:5px 15px;border-radius:20px;margin-top:8px;font-weight:bold">Fund: ₹<span id="wTop">0</span></p></div>
+<!-- PROBLEM PAGE - NEW SIMPLE -->
+<div id="problem" class="page">
+<div class="header"><h2>❓ My Problem</h2><p>Ethavathu problem na inga sollu da</p></div>
+<div class="card">
+<h3>Problem Sollu da Machi</h3>
+<input id="probName" class="input" placeholder="Un Name">
+<input id="probPhone" class="input" placeholder="Phone Number">
+<textarea id="probMsg" class="input" style="height:80px" placeholder="Enna problem da?"></textarea>
+<button class="btn btnBuy" style="width:100%" onclick="sendProblem()">📱 WhatsApp la Anuppu</button>
+</div>
+</div>
 
-<div class="profileBtn" onclick="toggleBal()"><div><b>📚 My Education Fund</b><br><small>₹<span id="w2">0</span> - Tap</small></div><div>➡️</div></div>
-<div class="profileBtn" onclick="toggleAddr()" style="border-left-color:red"><div><b>📍 My Address</b><br><small id="addrMini">Add pannu</small></div><div>➡️</div></div>
-<div class="profileBtn" onclick="alert('Referral: STAR100')" style="border-left-color:green"><div><b
+<!-- PROFILE PAGE - SIMPLE LA ELLAM THERIYUM -->
+<div id="profile" class="page">
+<div class="header"><h2>👤 My Profile</h2><p id="pHi">Hi Machi</p><p>Fund: ₹<span id="wTop">0</span></p></div>
+
+<div class="card" style="border-left
