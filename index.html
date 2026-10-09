@@ -1,58 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>En Website</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR MOBILE - Official</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box; font-family:Arial}
+body{margin:0; background:#f2f4f7}
+.cat{ background:white; border-radius:14px; padding:14px; text-align:center; box-shadow:0 2px 8px #0001}
+.cat:active{transform:scale(0.95)}
+.prod{background:white; border-radius:12px; padding:10px; box-shadow:0 2px 6px #0001}
+.btn{ background:#0d47a1; color:white; border:none; padding:8px 0; width:100%; border-radius:20px; font-weight:bold}
+</style>
 </head>
-<body style="margin:0; background:#eef2f7; font-family:Arial;">
+<body>
 
-  <div style="background:#0d47a1; color:white; padding:15px 20px; border-radius:0 0 20px 20px;">
-  
-  <div style="display:flex; justify-content:space-between; align-items:center;">
-    <h2 style="margin:0; font-size:20px;">STAR MOBILE 🔥</h2>
-    <span style="font-size:22px; background:white; padding:6px 10px; border-radius:50%;">🔍</span>
-  </div>
+<!-- HEADER -->
+<div style="background:#0d47a1; color:white; padding:14px 16px; position:sticky; top:0; z-index:99; border-radius:0 0 16px 16px;">
+<div style="display:flex; justify-content:space-between; align-items:center;">
+<h3 style="margin:0;">STAR MOBILE 🔥</h3>
+<div><span onclick="showCart()" style="background:white; color:#0d47a1; padding:6px 12px; border-radius:20px; font-weight:bold;">🛒 <span id="cartCount">0</span></span> <span onclick="showOrders()" style="background:#ffca28; color:black; padding:6px 10px; border-radius:20px; font-size:12px; margin-left:5px;">My Orders</span></div>
+</div>
+<input id="search" onkeyup="searchProd()" placeholder="Search product... 🔍" style="width:100%; padding:10px 14px; border-radius:25px; border:none; margin-top:12px;">
+</div>
 
-  <p style="margin:8px 0 0 0; font-size:13px; text-align:center;">தாராளமா வாங்க, தரமான பொருளை வாங்குக</p>
-  
-  <input type="text" placeholder="Search mobile... 🔍" style="width:100%; padding:10px; border-radius:25px; border:none; margin-top:12px; box-sizing:border-box;">
+<!-- HOME CATEGORIES -->
+<div id="home">
+<div style="padding:14px;">
+<p style="font-weight:bold; margin:5px 0;">Shop by Category 👇</p>
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+
+<div class="cat" onclick="openCat('Mobile')"><div style="font-size:28px;">📱</div><b style="font-size:13px;">Mobile</b></div>
+<div class="cat" onclick="openCat('Electronics')"><div style="font-size:28px;">🔋</div><b style="font-size:13px;">Battery & Acc</b></div>
+<div class="cat" onclick="openCat('Furniture')"><div style="font-size:28px;">🪑</div><b style="font-size:13px;">Furniture</b></div>
+<div class="cat" onclick="openCat('Toys')"><div style="font-size:28px;">🧸</div><b style="font-size:13px;">Toys</b></div>
+<div class="cat" onclick="openCat('Stationery')"><div style="font-size:28px;">📚</div><b style="font-size:13px;">Stationery</b></div>
+<div class="cat" onclick="openCat('Gift')"><div style="font-size:28px;">🎁</div><b style="font-size:13px;">Gift</b></div>
 
 </div>
-  <!-- HOME PAGE START DA MACHI -->
 
-  <div style="padding:15px;">
+<div style="background:#e3f2fd; border-left:4px solid #0d47a1; padding:10px; border-radius:8px; margin-top:14px;">
+<b>🎓 1% Education Fund</b><br><span style="font-size:12px;">Nenga vangura ovvoru order layum 1% education fund ku pogum da Machi! Unga cashback-a edukalam da!</span>
+</div>
 
-    <h3 style="margin:10px 0;">🔥 Trending Mobiles da!</h3>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-
-      <!-- PRODUCT 1 DA -->
-      <div style="background:white; padding:10px; border-radius:12px; box-shadow:0 2px 5px #ccc;">
-        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300" style="width:100%; height:110px; border-radius:10px; object-fit:cover;">
-        <p style="font-weight:bold; margin:8px 0 3px 0; font-size:13px;">Redmi Note 13</p>
-        <p style="color:green; font-weight:bold; margin:0; font-size:14px;">₹12,999</p>
-        <button style="background:#0d47a1; color:white; border:none; width:100%; padding:8px; border-radius:20px; margin-top:6px; font-size:12px;">BUY NOW</button>
-      </div>
-
-      <!-- PRODUCT 2 DA -->
-      <div style="background:white; padding:10px; border-radius:12px; box-shadow:0 2px 5px #ccc;">
-        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300" style="width:100%; height:110px; border-radius:10px; object-fit:cover;">
-        <p style="font-weight:bold; margin:8px 0 3px 0; font-size:13px;">iPhone 15</p>
-        <p style="color:green; font-weight:bold; margin:0; font-size:14px;">₹69,999</p>
-        <button style="background:#0d47a1; color:white; border:none; width:100%; padding:8px; border-radius:20px; margin-top:6px; font-size:12px;">BUY NOW</button>
-      </div>
-
-      <!-- PRODUCT 3 DA -->
-      <div style="background:white; padding:10px; border-radius:12px; box-shadow:0 2px 5px #ccc;">
-        <img src="https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?w=300" style="width:100%; height:110px; border-radius:10px; object-fit:cover;">
-        <p style="font-weight:bold; margin:8px 0 3px 0; font-size:13px;">Samsung S23</p>
-        <p style="color:green; font-weight:bold; margin:0; font-size:14px;">₹45,999</p>
-        <button style="background:#0d47a1; color:white; border:none; width:100%; padding:8px; border-radius:20px; margin-top:6px; font-size:12px;">BUY NOW</button>
-<button style=background green colour white border:none;width100%; padding:8px;border-radius:20px;margin-top:6x; fint-size:12px;">add card</button>
-      </div>
-
-      <!-- PRODUCT 4 DA -->
-      <div style="background:white; padding:10px; border-radius:12px; box-shadow:0 2px 5px #ccc;">
-        <img src="https://images.unsplash.com/photo-1585060544812-6b457
-</body>
-</html>
+<h4 style="margin:18px 0 8px 0;">🔥 All Products</
