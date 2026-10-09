@@ -18,79 +18,9 @@ body{margin:0;font-family:Arial;background:#eef2f7;padding-bottom:90px}
 .menuItem{color:white;text-align:center;font-size:11px;font-weight:bold;padding:8px 10px;border-radius:10px}
 .menuItem.active{background:white;color:#0d47a1}
 .input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0;box-sizing:border-box}
+.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#0d47a1;color:white;padding:22px 30px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,0.4);z-index:99999999;font-weight:bold;text-align:center;display:none;min-width:250px;font-size:15px}
 </style>
 </head>
 <body>
-<div class="top"><b>⭐ STAR MOBILE</b><br><input id="search" style="width:95%;padding:8px;border-radius:20px;border:1px solid #ccc;margin-top:8px" placeholder="🔍 Search..." onkeyup="searchFun()"></div>
-
-<div id="home" class="page">
-<div class="header"><h2>Welcome to STAR MOBILE</h2><p style="font-size:12px">அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p></div>
-<div id="productList"></div>
-</div>
-
-<div id="order" class="page"><div class="header"><h2>📦 My Orders</h2></div><div id="orderBox">Order illa</div></div>
-<div id="cart" class="page"><div class="header"><h2>🛒 My Cart</h2></div><div id="cartBox">Cart empty</div><button id="cartBuyBtn" class="btn btnBuy" style="display:none;width:100%;padding:15px;margin-top:10px" onclick="buyFromCart()">CART BUY</button></div>
-<div id="problem" class="page"><div class="header"><h2>❓ My Problem</h2></div><div class="card"><input id="probMsg" class="input" placeholder="Enna problem?"><button class="btn btnBuy" style="width:100%" onclick="sendProblem()">Send</button></div></div>
-
-<div id="profile" class="page">
-<div class="header"><h2>👤 My Profile</h2><p id="pHi">Hi Machi</p><p>Fund: ₹<span id="wTop">0</span></p></div>
-<div class="card"><b>📚 Fund ₹<span id="w2">0</span></b><br><p id="withdrawMsg"></p><button class="btn btnBuy" style="background:orange;width:100%;margin-top:5px" onclick="withdraw()">Withdraw</button></div>
-<div class="card"><b>📍 Address</b><br><input id="a_name" class="input" placeholder="Name *"><input id="a_phone" class="input" placeholder="Phone *"><input id="a_city" class="input" placeholder="City *"><button class="btn btnBuy" style="width:100%" onclick="saveAddr()">Save</button><p id="addrMini">No Address</p></div>
-
-<div class="card" style="border:2px solid #0d47a1;background:#e3f2fd;text-align:center">
-<b>🔐 ADMIN - Same Page la Product Add</b><br>
-<div id="adminLoginBox"><input id="adminPass" type="password" class="input" placeholder="Password: STAR123"><button class="btn btnBuy" style="background:#0d47a1;width:100%" onclick="adminLogin()">Login</button></div>
-<div id="adminPanelBox" style="display:none">
-<p style="color:green;font-weight:bold">✅ Admin Login OK da!</p>
-<div class="card" style="border:2px dashed #ff9800;background:#fff3e0">
-<input id="p_name" class="input" placeholder="Product Name"><input id="p_price" class="input" type="number" placeholder="Price"><input id="p_fund" class="input" type="number" placeholder="Fund"><input id="p_image" class="input" placeholder="Image URL (empty ok)"><input id="p_emoji" class="input" placeholder="Emoji 📱"><button class="btn btnBuy" style="width:100%" onclick="addProduct()">✅ ADD - Public la Post Aagum</button>
-</div>
-<div id="adminList"></div>
-<button class="btn" style="background:black;color:white;width:100%" onclick="adminLogout()">Logout</button>
-</div>
-</div>
-</div>
-
-<div id="buyConfirm" class="page"><div class="header"><h2>Confirm</h2></div><div class="card"><h3 id="bName"></h3><p>₹<span id="bPrice"></span> | Fund ₹<span id="bCB"></span></p><div id="bAddr" style="background:#e3f2fd;padding:8px;border-radius:8px"></div><button class="btn btnBuy" style="width:100%;margin-top:8px" onclick="finalBuy('COD')">COD</button><button class="btn btnBuy" style="width:100%;margin-top:8px;background:#0d47a1" onclick="finalBuy('Online')">Online</button></div></div>
-
-<div class="bottomMenu">
-<div class="menuItem active" id="mHome" onclick="goPage('home')">🏠<br>Home</div>
-<div class="menuItem" id="mOrder" onclick="goPage('order')">📦<br>Order</div>
-<div class="menuItem" id="mCart" onclick="goPage('cart')">🛒<br>Cart</div>
-<div class="menuItem" id="mProblem" onclick="goPage('problem')">❓<br>Problem</div>
-<div class="menuItem" id="mProfile" onclick="goPage('profile')">👤<br>Profile</div>
-</div>
-
-<script>
-let defaultProducts=[
-{name:"Redmi Note 13 Pro",price:12999,fund:129,emoji:"📱",image:"https://dummyimage.com/600x300/0d47a1/ffffff&text=Redmi"},
-{name:"AirPods Pro",price:1499,fund:14,emoji:"🎧",image:"https://dummyimage.com/600x300/222222/ffffff&text=AirPods"},
-{name:"Smart Watch Ultra",price:2999,fund:29,emoji:"⌚",image:"https://dummyimage.com/600x300/000000/ffffff&text=Watch"}
-];
-let products=JSON.parse(localStorage.getItem('sm_products')||'null')||defaultProducts;
-let wallet=parseInt(localStorage.getItem('sm_w')||0),orders=JSON.parse(localStorage.getItem('sm_o')||'[]'),cartItems=JSON.parse(localStorage.getItem('sm_cart')||'[]'),addr=JSON.parse(localStorage.getItem('sm_a')||'null'),wYear=localStorage.getItem('sm_wy')||'',isAdmin=localStorage.getItem('sm_admin')==='yes',cur=null;
-function saveProducts(){localStorage.setItem('sm_products',JSON.stringify(products));renderProducts();renderAdmin();}
-function renderProducts(){let html='';products.forEach(p=>{html+=`<div class="card"><img src="${p.image}" onerror="this.src='https://dummyimage.com/600x300/0d47a1/ffffff&text=${p.name}'"><h3>${p.emoji} ${p.name} - ₹${p.price} | Fund ₹${p.fund}</h3><div class="btnRow"><button class="btn btnBuy" onclick="buyNow('${p.name}',${p.price},${p.fund})">BUY NOW</button><button class="btn btnCart" onclick="addCart('${p.name}',${p.price},${p.fund})">ADD CART</button></div></div>`});document.getElementById('productList').innerHTML=html;}
-function renderAdmin(){let h='';products.forEach((p,i)=>{h+=`<div class="card" style="display:flex;justify-content:space-between;align-items:center"><div><b>${p.emoji} ${p.name}</b><br><small>₹${p.price}</small></div><button onclick="deleteProduct(${i})" style="background:red;color:white;border:none;padding:6px 10px;border-radius:8px">Delete</button></div>`});document.getElementById('adminList').innerHTML=h;}
-function adminLogin(){if(document.getElementById('adminPass').value==='STAR123'){localStorage.setItem('sm_admin','yes');isAdmin=true;document.getElementById('adminLoginBox').style.display='none';document.getElementById('adminPanelBox').style.display='block';renderAdmin();alert('Admin OK da!');}else alert('STAR123 da!');}
-function adminLogout(){localStorage.removeItem('sm_admin');isAdmin=false;document.getElementById('adminLoginBox').style.display='block';document.getElementById('adminPanelBox').style.display='none';}
-if(isAdmin){document.getElementById('adminLoginBox').style.display='none';document.getElementById('adminPanelBox').style.display='block';}
-function addProduct(){let name=document.getElementById('p_name').value.trim();let price=parseInt(document.getElementById('p_price').value);let fund=parseInt(document.getElementById('p_fund').value);let image=document.getElementById('p_image').value.trim()||`https://dummyimage.com/600x300/0d47a1/ffffff&text=${name}`;let emoji=document.getElementById('p_emoji').value||'📱';if(!name||!price||!fund){alert('Name Price Fund must!');return;}products.push({name,price,fund,image,emoji});saveProducts();document.getElementById('p_name').value='';document.getElementById('p_price').value='';document.getElementById('p_fund').value='';document.getElementById('p_image').value='';document.getElementById('p_emoji').value='';alert(name+' Add Aayiduchu! Public Home la varum! ✅');goPage('home');}
-function deleteProduct(i){if(confirm('Delete?')){products.splice(i,1);saveProducts();}}
-function goPage(id){document.querySelectorAll('.page').forEach(p=>p.style.display='none');document.getElementById(id).style.display='block';document.querySelectorAll('.menuItem').forEach(m=>m.classList.remove('active'));if(id=='home')document.getElementById('mHome').classList.add('active');if(id=='order'){document.getElementById('mOrder').classList.add('active');showOrders()}if(id=='cart'){document.getElementById('mCart').classList.add('active');showCart()}if(id=='problem')document.getElementById('mProblem').classList.add('active');if(id=='profile')document.getElementById('mProfile').classList.add('active');window.scrollTo(0,0);update();}
-function update(){document.getElementById('wTop').innerText=wallet;document.getElementById('w2').innerText=wallet;if(addr){document.getElementById('addrMini').innerText=addr.city;document.getElementById('pHi').innerText='Hi '+addr.name;document.getElementById('a_name').value=addr.name;document.getElementById('a_phone').value=addr.phone;document.getElementById('a_city').value=addr.city;}}
-function searchFun(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('#productList .card').forEach(c=>{c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none'})}
-function buyNow(n,p,cb){if(!addr){alert('Address add pannu!');goPage('profile');return}cur={name:n,price:p,cb:cb};document.getElementById('bName').innerText=n;document.getElementById('bPrice').innerText=p;document.getElementById('bCB').innerText=cb;document.getElementById('bAddr').innerText=addr.name;goPage('buyConfirm')}
-function addCart(n,p,cb){cartItems.push({name:n,price:p,cb:cb});localStorage.setItem('sm_cart',JSON.stringify(cartItems));alert('Add aayiduchu!')}
-function showCart(){let box=document.getElementById('cartBox');let btn=document.getElementById('cartBuyBtn');if(cartItems.length==0){box.innerHTML='Cart empty';btn.style.display='none';return}let h='';cartItems.forEach((c,i)=>{h+=`<div class="card"><b>${c.name}</b> ₹${c.price} <button onclick="removeCart(${i})" style="float:right;background:red;color:white;border:none;padding:4px 8px;border-radius:8px">X</button></div>`});box.innerHTML=h;btn.style.display='block'}
-function removeCart(i){cartItems.splice(i,1);localStorage.setItem('sm_cart',JSON.stringify(cartItems));showCart()}
-function buyFromCart(){let tot=0;cartItems.forEach(c=>tot+=c.cb);cur={name:cartItems.map(c=>c.name).join(' + '),price:cartItems.reduce((s,c)=>s+c.price,0),cb:tot};document.getElementById('bName').innerText=cur.name;document.getElementById('bPrice').innerText=cur.price;document.getElementById('bCB').innerText=cur.cb;goPage('buyConfirm')}
-function saveAddr(){let o={name:document.getElementById('a_name').value,phone:document.getElementById('a_phone').value,city:document.getElementById('a_city').value};addr=o;localStorage.setItem('sm_a',JSON.stringify(o));alert('Save aayiduchu!');update()}
-function finalBuy(t){wallet+=cur.cb;localStorage.setItem('sm_w',wallet);orders.push({name:cur.name,price:cur.price,cb:cur.cb,type:t,date:new Date().toLocaleDateString()});localStorage.setItem('sm_o',JSON.stringify(orders));cartItems=[];localStorage.setItem('sm_cart','[]');window.open('https://wa.me/916381236842?text=Order:'+cur.name,'_blank');alert('Success!');goPage('order')}
-function showOrders(){let h='';if(orders.length==0)h='Order illa';else orders.slice().reverse().forEach(o=>{h+=`<div class="card"><b>${o.name}</b> ₹${o.price}<br><small>${o.date}</small></div>`});document.getElementById('orderBox').innerHTML=h}
-function withdraw(){}
-function sendProblem(){let m=document.getElementById('probMsg').value;window.open('https://wa.me/916381236842?text=Problem:'+m,'_blank')}
-renderProducts();renderAdmin();update();
-</script>
-</body>
-</html>
+<div id="customToast" class="toast"></div>
+<div class="top"><b>⭐ STAR MOBILE</b><br><input id="search" style="width:95%;padding:8px;border-radius:20px;border:1px solid #ccc;margin-top:8px" placeholder="🔍 Search..." onkeyup="searchFun()"></div
