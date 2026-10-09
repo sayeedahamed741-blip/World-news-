@@ -8,21 +8,20 @@
 body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 .top{background:white;padding:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
 .top input{border:1px solid #ddd;border-radius:20px;padding:6px 10px;width:150px}
-.page{padding:10px}
+.page{padding:10px;min-height:80vh}
 .header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:white;padding:25px;text-align:center;border-radius:0 0 25px 25px}
-.header h2{margin:0;font-size:22px}
-.header p{margin:8px 0 0 0;font-size:14px;opacity:0.9}
-.card{background:white;margin:12px 0;padding:12px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1)}
+.card{background:white;margin:12px 0;padding:15px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1)}
 .card img{width:100%;height:160px;object-fit:contain;border-radius:10px;background:#f9f9f9}
 .btnRow{display:flex;gap:8px;margin-top:10px}
 .btn{border:none;padding:12px;border-radius:25px;font-weight:bold;flex:1;cursor:pointer}
 .btnBuy{background:#2e7d32;color:white}
 .btnCart{background:#d32f2f;color:white}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #ddd}
-.nav{font-size:13px;color:gray;text-align:center}
-.nav.active{color:#0d47a1;font-weight:bold}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:2px solid #0d47a1;z-index:100}
+.nav{font-size:13px;color:gray;text-align:center;cursor:pointer;padding:5px 15px}
+.nav.active{color:#0d47a1;font-weight:bold;background:#e3f2fd;border-radius:10px}
 .input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0;box-sizing:border-box}
 .badge{background:#e8f5e9;color:#2e7d32;padding:4px 8px;border-radius:10px;font-size:12px;font-weight:bold}
+.profileBtn{background:white;margin:10px 0;padding:18px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-left:5px solid #0d47a1}
 </style>
 </head>
 <body>
@@ -32,12 +31,12 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 <input id="search" placeholder="🔍 Search..." onkeyup="searchFun()">
 </div>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <div id="home" class="page">
 <div class="header">
 <h2>Welcome to STAR MOBILE</h2>
 <p>அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
-<p style="margin-top:10px;font-size:12px;opacity:0.8">Didwana | 6381236842</p>
+<p style="font-size:12px;margin-top:8px">📚 Education Fund 1% | June Withdrawal</p>
 </div>
 
 <div class="card">
@@ -66,53 +65,4 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 <p>₹2,999 | <span class="badge">📚 Education Fund ₹29</span></p>
 <div class="btnRow">
 <button class="btn btnBuy" onclick="buyNow('Smart Watch Ultra',2999,29)">BUY NOW</button>
-<button class="btn btnCart" onclick="addCart('Smart Watch Ultra',2999,29)">ADD CART</button>
-</div>
-</div>
-
-</div>
-
-<!-- ORDER -->
-<div id="order" class="page" style="display:none">
-<div class="header"><h2>📦 My Orders</h2></div>
-<div id="orderBox"></div>
-</div>
-
-<!-- CART -->
-<div id="cart" class="page" style="display:none">
-<div class="header"><h2>🛒 My Cart</h2></div>
-<div id="cartBox">Cart empty da Machi</div>
-<button id="cartBuyBtn" class="btn btnBuy" style="display:none;margin-top:10px" onclick="buyFromCart()">Cart la irunthu Buy Pannu</button>
-</div>
-
-<!-- PROFILE -->
-<div id="profile" class="page" style="display:none">
-<div class="header"><h2>👤 Profile</h2><p id="pHi">Welcome Machi!</p><p>Education Fund: ₹<span id="wTop">0</span></p></div>
-<div class="card" onclick="showBal()"><b>📚 My Education Fund - ₹<span id="w2">0</span></b><br><small>Tap pannu</small></div>
-<div class="card" onclick="showAddressPage()"><b>📍 My Address</b><br><small id="addrMini">Address add pannu da</small></div>
-<div class="card" onclick="alert('Referral Code: STAR100')"><b>👥 Referral</b></div>
-<div id="balanceDetail" style="display:none" class="card">
-<h3>📚 Education Fund: ₹<span id="w3">0</span></h3>
-<p style="font-size:13px">Porul vanguna 1% Education Fund la add aagum da Machi! Padikkira pullainga ku use aagum!</p>
-<p style="font-size:13px;margin-top:8px"><b>Rule:</b> June la mattum edukalam, 1 year ku 1 time, Min ₹100</p>
-<p id="withdrawMsg" style="font-weight:bold;color:green"></p>
-<button class="btn btnBuy" style="background:orange" onclick="withdraw()">Fund Withdrawal</button>
-</div>
-<div id="addressDetail" style="display:none" class="card">
-<h3>Address</h3>
-<input id="a_name" class="input" placeholder="Full Name">
-<input id="a_phone" class="input" placeholder="Phone Number">
-<input id="a_door" class="input" placeholder="Door Number">
-<input id="a_pin" class="input" placeholder="Pin Code">
-<input id="a_street" class="input" placeholder="Street">
-<input id="a_city" class="input" placeholder="City">
-<button class="btn btnBuy" onclick="saveAddr()">Save</button>
-</div>
-</div>
-
-<!-- BUY CONFIRM -->
-<div id="buyConfirm" class="page" style="display:none">
-<div class="header"><h2>Confirm Buy</h2></div>
-<div class="card">
-<h3 id="bName">Product</h3>
-<p>Price ₹<span id="bPrice">0</span> | 📚 Fund
+<button class="btn btnCart" onclick="addCart('Smart Watch Ultra
