@@ -5,109 +5,143 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STAR MOBILE</title>
 <style>
-body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:160px}
-.top{background:white;padding:12px;text-align:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
+body{margin:0;font-family:Arial;background:#eef2f7;padding-bottom:90px}
+.top{background:white;padding:10px;text-align:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
 .page{padding:10px;display:none}
 #home{display:block}
-.header{background:#0d47a1;color:white;padding:20px;text-align:center;border-radius:0 0 20px 20px}
-.card{background:white;margin:10px 0;padding:12px;border-radius:12px;box-shadow:0 2px 6px #ccc}
+.header{background:#0d47a1;color:white;padding:18px;text-align:center;border-radius:0 0 18px 18px}
+.card{background:white;margin:10px 0;padding:10px;border-radius:12px;box-shadow:0 2px 6px #ccc}
+.card img{width:100%;height:160px;object-fit:cover;border-radius:10px;background:#ddd}
 .btnRow{display:flex;gap:8px;margin-top:8px}
 .btn{border:none;padding:12px;border-radius:25px;font-weight:bold;flex:1}
 .btnBuy{background:#2e7d32;color:white}
 .btnCart{background:#d32f2f;color:white}
-
-/* KILA MENU - PERUSA SIMPLE AH DA MACHI */
-.bottomNav{
-position:fixed;bottom:0;left:0;right:0;
-background:#ffffff;
-display:flex;justify-content:space-around;
-padding:12px 0;
-border-top:4px solid #0d47a1;
-z-index:999999;
-box-shadow:0 -3px 15px rgba(0,0,0,0.3);
-}
-.bItem{
-text-align:center;
-font-size:13px;
-color:#666;
-padding:8px 12px;
-border-radius:12px;
-font-weight:bold;
-}
-.bItem.active{background:#0d47a1;color:white}
-.badge{background:#e8f5e9;color:#2e7d32;padding:3px 6px;border-radius:6px;font-size:11px}
 .input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0}
+
+/* KILA MENU - IPPO BLUE BACKGROUND - 100% THERIYUM DA */
+.bottomMenu{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:75px;
+background:#0d47a1;
+display:flex;
+justify-content:space-around;
+align-items:center;
+z-index:9999999;
+border-top:3px solid #ffeb3b;
+}
+.menuItem{
+color:white;
+text-align:center;
+font-size:12px;
+font-weight:bold;
+padding:8px 10px;
+border-radius:10px;
+}
+.menuItem.active{background:white;color:#0d47a1}
 </style>
 </head>
 <body>
 
 <div class="top">
-<b style="font-size:18px">⭐ STAR MOBILE</b>
-<div style="margin-top:8px"><input id="search" style="width:90%;padding:8px;border-radius:20px;border:1px solid #ccc" placeholder="🔍 Search..." onkeyup="searchFun()"></div>
+<b style="font-size:18px">⭐ STAR MOBILE</b><br>
+<input id="search" style="width:95%;padding:8px;border-radius:20px;border:1px solid #ccc;margin-top:8px" placeholder="🔍 Search..." onkeyup="searchFun()">
 </div>
 
-<!-- HOME PAGE -->
 <div id="home" class="page">
 <div class="header">
 <h2>Welcome to STAR MOBILE</h2>
-<p style="font-size:13px">அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
+<p style="font-size:12px;margin-top:5px">அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
 </div>
 
 <div class="card">
-<img src="https://dummyimage.com/600x300/0d47a1/ffffff&text=Redmi+Note+13+Pro" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
-<h3>📱 Redmi Note 13 Pro - ₹12,999 <span class="badge">📚 Fund ₹129</span></h3>
-<div class="btnRow">
-<button class="btn btnBuy" onclick="buyNow('Redmi Note 13 Pro',12999,129)">BUY NOW</button>
-<button class="btn btnCart" onclick="addCart('Redmi Note 13 Pro',12999,129)">ADD CART</button>
-</div>
+<img src="https://dummyimage.com/600x300/0d47a1/ffffff&text=Redmi+Note+13+Pro">
+<h3>📱 Redmi Note 13 Pro - ₹12,999 | 📚 Fund ₹129</h3>
+<div class="btnRow"><button class="btn btnBuy" onclick="buyNow('Redmi',12999,129)">BUY NOW</button><button class="btn btnCart" onclick="addCart('Redmi',12999,129)">ADD CART</button></div>
 </div>
 
 <div class="card">
-<img src="https://dummyimage.com/600x300/111111/ffffff&text=AirPods+Pro" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
-<h3>🎧 AirPods Pro - ₹1,499 <span class="badge">📚 Fund ₹14</span></h3>
-<div class="btnRow">
-<button class="btn btnBuy" onclick="buyNow('AirPods Pro',1499,14)">BUY NOW</button>
-<button class="btn btnCart" onclick="addCart('AirPods Pro',1499,14)">ADD CART</button>
-</div>
+<img src="https://dummyimage.com/600x300/222222/ffffff&text=AirPods+Pro">
+<h3>🎧 AirPods Pro - ₹1,499 | 📚 Fund ₹14</h3>
+<div class="btnRow"><button class="btn btnBuy" onclick="buyNow('AirPods Pro',1499,14)">BUY NOW</button><button class="btn btnCart" onclick="addCart('AirPods Pro',1499,14)">ADD CART</button></div>
 </div>
 
 <div class="card">
-<img src="https://dummyimage.com/600x300/333333/ffffff&text=Smart+Watch" style="width:100%;height:160px;object-fit:cover;border-radius:10px">
-<h3>⌚ Smart Watch Ultra - ₹2,999 <span class="badge">📚 Fund ₹29</span></h3>
-<div class="btnRow">
-<button class="btn btnBuy" onclick="buyNow('Smart Watch Ultra',2999,29)">BUY NOW</button>
-<button class="btn btnCart" onclick="addCart('Smart Watch Ultra',2999,29)">ADD CART</button>
-</div>
+<img src="https://dummyimage.com/600x300/000000/ffffff&text=Smart+Watch+Ultra">
+<h3>⌚ Smart Watch Ultra - ₹2,999 | 📚 Fund ₹29</h3>
+<div class="btnRow"><button class="btn btnBuy" onclick="buyNow('Watch Ultra',2999,29)">BUY NOW</button><button class="btn btnCart" onclick="addCart('Watch Ultra',2999,29)">ADD CART</button></div>
 </div>
 </div>
 
-<!-- ORDER PAGE - SIMPLE -->
-<div id="order" class="page">
-<div class="header"><h2>📦 My Orders</h2></div>
-<div id="orderBox">Order illa da Machi</div>
-</div>
-
-<!-- CART PAGE - SIMPLE -->
-<div id="cart" class="page">
-<div class="header"><h2>🛒 My Cart - Add Card</h2></div>
-<div id="cartBox">Cart empty da Machi</div>
-<button id="cartBuyBtn" class="btn btnBuy" style="display:none;width:100%;margin-top:10px;padding:15px" onclick="buyFromCart()">CART BUY NOW</button>
-</div>
-
-<!-- PROBLEM PAGE - NEW SIMPLE -->
-<div id="problem" class="page">
-<div class="header"><h2>❓ My Problem</h2><p>Ethavathu problem na inga sollu da</p></div>
-<div class="card">
-<h3>Problem Sollu da Machi</h3>
-<input id="probName" class="input" placeholder="Un Name">
-<input id="probPhone" class="input" placeholder="Phone Number">
-<textarea id="probMsg" class="input" style="height:80px" placeholder="Enna problem da?"></textarea>
-<button class="btn btnBuy" style="width:100%" onclick="sendProblem()">📱 WhatsApp la Anuppu</button>
-</div>
-</div>
-
-<!-- PROFILE PAGE - SIMPLE LA ELLAM THERIYUM -->
+<div id="order" class="page"><div class="header"><h2>📦 Order - Simple</h2></div><div id="orderBox" style="margin-top:10px">Order illa da Machi</div></div>
+<div id="cart" class="page"><div class="header"><h2>🛒 Add Card - Simple</h2></div><div id="cartBox">Cart empty da</div><button id="cartBuyBtn" class="btn btnBuy" style="display:none;width:100%;margin-top:10px;padding:15px" onclick="buyFromCart()">BUY NOW</button></div>
+<div id="problem" class="page"><div class="header"><h2>❓ My Problem - Simple</h2></div><div class="card"><input id="probMsg" class="input" placeholder="Enna problem?"><button class="btn btnBuy" style="width:100%" onclick="sendProblem()">Send</button></div></div>
 <div id="profile" class="page">
-<div class="header"><h2>👤 My Profile</h2><p id="pHi">Hi Machi</p><p>Fund: ₹<span id="wTop">0</span></p></div>
+<div class="header"><h2>👤 My Profile - Simple</h2><p id="pHi">Hi Machi</p><p>Fund: ₹<span id="wTop">0</span></p></div>
+<div class="card"><b>📚 Education Fund ₹<span id="w2">0</span></b><br><button class="btn btnBuy" style="background:orange;width:100%;margin-top:6px" onclick="withdraw()">Withdraw</button><p id="withdrawMsg" style="color:green;font-weight:bold"></p></div>
+<div class="card"><b>📍 My Address</b><br><input id="a_name" class="input" placeholder="Name *"><input id="a_phone" class="input" placeholder="Phone *"><input id="a_pin" class="input" placeholder="Pincode *"><input id="a_city" class="input" placeholder="City *"><input id="a_door" class="input" placeholder="Door No"><button class="btn btnBuy" style="width:100%" onclick="saveAddr()">Save</button><p id="addrMini" style="font-size:12px;color:gray">No Address</p></div>
+</div>
+<div id="buyConfirm" class="page"><div class="header"><h2>Confirm</h2></div><div class="card"><h3 id="bName"></h3><p>₹<span id="bPrice"></span> | Fund ₹<span id="bCB"></span></p><div id="bAddr" style="background:#e3f2fd;padding:8px;border-radius:8px"></div><button class="btn btnBuy" style="width:100%;margin-top:8px" onclick="finalBuy('COD')">COD</button><button class="btn btnBuy" style="width:100%;margin-top:8px;background:#0d47a1" onclick="finalBuy('Online')">Online</button></div></div>
 
-<div class="card" style="border-left
+<!-- KILA 5 BUTTON - BLUE BACKGROUND - IPPO KANDIPPA THERIYUM DA -->
+<div class="bottomMenu">
+<div class="menuItem active" id="mHome" onclick="goPage('home')">🏠<br>Home</div>
+<div class="menuItem" id="mOrder" onclick="goPage('order')">📦<br>Order</div>
+<div class="menuItem" id="mCart" onclick="goPage('cart')">🛒<br>Cart</div>
+<div class="menuItem" id="mProblem" onclick="goPage('problem')">❓<br>Problem</div>
+<div class="menuItem" id="mProfile" onclick="goPage('profile')">👤<br>Profile</div>
+</div>
+
+<script>
+let wallet=parseInt(localStorage.getItem('sm_w')||0);
+let orders=JSON.parse(localStorage.getItem('sm_o')||'[]');
+let cartItems=JSON.parse(localStorage.getItem('sm_cart')||'[]');
+let addr=JSON.parse(localStorage.getItem('sm_a')||'null');
+let wYear=localStorage.getItem('sm_wy')||'';
+let cur=null;
+function goPage(id){
+document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+document.getElementById(id).style.display='block';
+document.querySelectorAll('.menuItem').forEach(m=>m.classList.remove('active'));
+if(id=='home') document.getElementById('mHome').classList.add('active');
+if(id=='order') {document.getElementById('mOrder').classList.add('active'); showOrders();}
+if(id=='cart') {document.getElementById('mCart').classList.add('active'); showCart();}
+if(id=='problem') document.getElementById('mProblem').classList.add('active');
+if(id=='profile') document.getElementById('mProfile').classList.add('active');
+if(id=='buyConfirm') document.getElementById('mHome').classList.add('active');
+window.scrollTo(0,0);
+}
+function update(){
+document.getElementById('wTop').innerText=wallet;
+document.getElementById('w2').innerText=wallet;
+if(addr){
+document.getElementById('addrMini').innerText=addr.door+', '+addr.city;
+document.getElementById('pHi').innerText='Hi '+addr.name;
+document.getElementById('a_name').value=addr.name; document.getElementById('a_phone').value=addr.phone;
+document.getElementById('a_door').value=addr.door; document.getElementById('a_pin').value=addr.pincode;
+document.getElementById('a_city').value=addr.city;
+}
+let m=new Date().getMonth()+1; let y=new Date().getFullYear();
+let msg=document.getElementById('withdrawMsg');
+if(!msg) return;
+if(wYear==y) msg.innerText='❌ Already eduthitta';
+else if(m!=6) msg.innerText='⏳ June la mattum';
+else msg.innerText='✅ Pannalam';
+}
+function searchFun(){ let q=document.getElementById('search').value.toLowerCase(); document.querySelectorAll('#home .card').forEach(c=>{ c.style.display=c.innerText.toLowerCase().includes(q)?'block':'none'; }); }
+function buyNow(n,p,cb){ if(!addr){ alert('Address add pannu da!'); goPage('profile'); return; } cur={name:n,price:p,cb:cb}; document.getElementById('bName').innerText=n; document.getElementById('bPrice').innerText=p; document.getElementById('bCB').innerText=cb; document.getElementById('bAddr').innerText=addr.name+' '+addr.city; goPage('buyConfirm'); }
+function addCart(n,p,cb){ cartItems.push({name:n,price:p,cb:cb}); localStorage.setItem('sm_cart',JSON.stringify(cartItems)); alert('Add aayiduchu da! Kila Cart paaru da!'); showCart(); }
+function showCart(){ let box=document.getElementById('cartBox'); let btn=document.getElementById('cartBuyBtn'); if(cartItems.length==0){ box.innerHTML='Cart empty'; btn.style.display='none'; return; } let h=''; cartItems.forEach((c,i)=>{ h+=`<div class="card"><b>${c.name}</b> ₹${c.price} <b style="color:green">Fund +₹${c.cb}</b> <button onclick="removeCart(${i})" style="float:right;background:red;color:white;border:none;padding:4px 8px;border-radius:8px">X</button></div>`; }); box.innerHTML=h; btn.style.display='block'; }
+function removeCart(i){ cartItems.splice(i,1); localStorage.setItem('sm_cart',JSON.stringify(cartItems)); showCart(); }
+function buyFromCart(){ if(!addr){ alert('Address add pannu'); goPage('profile'); return; } let tot=0; cartItems.forEach(c=>tot+=c.cb); cur={name:cartItems.map(c=>c.name).join(' + '), price:cartItems.reduce((s,c)=>s+c.price,0), cb:tot}; document.getElementById('bName').innerText=cur.name; document.getElementById('bPrice').innerText=cur.price; document.getElementById('bCB').innerText=cur.cb; document.getElementById('bAddr').innerText=addr.name; goPage('buyConfirm'); }
+function saveAddr(){ let o={name:document.getElementById('a_name').value, phone:document.getElementById('a_phone').value, door:document.getElementById('a_door').value, pincode:document.getElementById('a_pin').value, city:document.getElementById('a_city').value}; if(!o.name||!o.phone){ alert('Name Phone must'); return; } addr=o; localStorage.setItem('sm_a',JSON.stringify(o)); alert('Save aayiduchu!'); update(); }
+function finalBuy(t){ wallet+=cur.cb; localStorage.setItem('sm_w',wallet); orders.push({name:cur.name,price:cur.price,cb:cur.cb,type:t,date:new Date().toLocaleDateString()}); localStorage.setItem('sm_o',JSON.stringify(orders)); cartItems=[]; localStorage.setItem('sm_cart','[]'); window.open('https://wa.me/916381236842?text=Order:'+cur.name+' ₹'+cur.price,'_blank'); alert('Success Fund +₹'+cur.cb); goPage('order'); }
+function showOrders(){ let h=''; if(orders.length==0) h='Order illa da'; else orders.slice().reverse().forEach(o=>{ h+=`<div class="card"><b>${o.name}</b> ₹${o.price} | Fund +₹${o.cb}<br><small>${o.date}</small></div>`; }); document.getElementById('orderBox').innerHTML=h; }
+function withdraw(){ let m=new Date().getMonth()+1; let y=new Date().getFullYear(); if(wallet<100){ alert('Min 100'); return; } if(wYear==y){ alert('Already'); return; } if(m!=6){ alert('June only'); return; } localStorage.setItem('sm_wy',y); window.open('https://wa.me/916381236842?text=Withdraw ₹'+wallet,'_blank'); wallet=0; localStorage.setItem('sm_w',0); update(); }
+function sendProblem(){ let msg=document.getElementById('probMsg').value; if(!msg){ alert('Type pannu'); return; } window.open('https://wa.me/916381236842?text=Problem:'+msg,'_blank'); }
+update(); showCart(); showOrders();
+</script>
+</body>
+</html>
