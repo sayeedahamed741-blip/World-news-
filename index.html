@@ -5,23 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STAR MOBILE</title>
 <style>
-body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:100px}
 .top{background:white;padding:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px #ccc;position:sticky;top:0;z-index:10}
-.top input{border:1px solid #ddd;border-radius:20px;padding:6px 10px;width:150px}
-.page{padding:10px;min-height:80vh}
-.header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:white;padding:25px;text-align:center;border-radius:0 0 25px 25px}
-.card{background:white;margin:12px 0;padding:15px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1)}
-.card img{width:100%;height:160px;object-fit:contain;border-radius:10px;background:#f9f9f9}
+.top input{border:1px solid #ddd;border-radius:20px;padding:6px 10px;width:140px}
+.page{padding:10px}
+.header{background:#0d47a1;color:white;padding:20px;text-align:center;border-radius:0 0 20px 20px}
+.card{background:white;margin:12px 0;padding:12px;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.card img{width:100%;height:180px;object-fit:contain;background:white;border-radius:10px;display:block}
 .btnRow{display:flex;gap:8px;margin-top:10px}
-.btn{border:none;padding:12px;border-radius:25px;font-weight:bold;flex:1;cursor:pointer}
+.btn{border:none;padding:13px;border-radius:25px;font-weight:bold;flex:1;font-size:14px}
 .btnBuy{background:#2e7d32;color:white}
 .btnCart{background:#d32f2f;color:white}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:10px 0;border-top:2px solid #0d47a1;z-index:100}
-.nav{font-size:13px;color:gray;text-align:center;cursor:pointer;padding:5px 15px}
-.nav.active{color:#0d47a1;font-weight:bold;background:#e3f2fd;border-radius:10px}
-.input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0;box-sizing:border-box}
-.badge{background:#e8f5e9;color:#2e7d32;padding:4px 8px;border-radius:10px;font-size:12px;font-weight:bold}
-.profileBtn{background:white;margin:10px 0;padding:18px;border-radius:15px;box-shadow:0 3px 10px rgba(0,0,0,0.1);display:flex;justify-content:space-between;align-items:center;cursor:pointer;border-left:5px solid #0d47a1}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;display:flex;justify-content:space-around;padding:12px 0 15px 0;border-top:3px solid #0d47a1;z-index:9999;box-shadow:0 -2px 10px rgba(0,0,0,0.2)}
+.nav{font-size:12px;color:gray;text-align:center;padding:5px 15px;border-radius:10px}
+.nav.active{color:#0d47a1;background:#e3f2fd;font-weight:bold}
+.input{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;margin:5px 0}
+.badge{background:#e8f5e9;color:#2e7d32;padding:4px 8px;border-radius:8px;font-size:12px;font-weight:bold}
+.profileBtn{background:white;margin:10px 0;padding:18px;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;justify-content:space-between;align-items:center;border-left:5px solid #0d47a1}
 </style>
 </head>
 <body>
@@ -31,16 +32,15 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 <input id="search" placeholder="🔍 Search..." onkeyup="searchFun()">
 </div>
 
-<!-- HOME PAGE -->
 <div id="home" class="page">
 <div class="header">
 <h2>Welcome to STAR MOBILE</h2>
-<p>அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
-<p style="font-size:12px;margin-top:8px">📚 Education Fund 1% | June Withdrawal</p>
+<p style="font-size:13px;margin-top:6px">அனைத்து மாடல் போன்களுக்கும் சர்வீஸ் செய்து தரப்படும்..</p>
+<p style="font-size:11px;margin-top:8px;opacity:0.8">📚 Education Fund 1%</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400">
+<img src="https://i.ibb.co/0jq7y1t/redmi.png" onerror="this.src='https://via.placeholder.com/300x180?text=Redmi+Note+13+Pro'">
 <h3>📱 Redmi Note 13 Pro</h3>
 <p>₹12,999 | <span class="badge">📚 Education Fund ₹129</span></p>
 <div class="btnRow">
@@ -50,7 +50,7 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=400">
+<img src="https://i.ibb.co/5W8x0dS/airpods.png" onerror="this.src='https://via.placeholder.com/300x180?text=AirPods+Pro'">
 <h3>🎧 AirPods Pro</h3>
 <p>₹1,499 | <span class="badge">📚 Education Fund ₹14</span></p>
 <div class="btnRow">
@@ -60,9 +60,31 @@ body{margin:0;font-family:Arial;background:#f0f4ff;padding-bottom:80px}
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400">
+<img src="https://i.ibb.co/0jH6bW3/watch.png" onerror="this.src='https://via.placeholder.com/300x180?text=Smart+Watch+Ultra'">
 <h3>⌚ Smart Watch Ultra</h3>
 <p>₹2,999 | <span class="badge">📚 Education Fund ₹29</span></p>
 <div class="btnRow">
 <button class="btn btnBuy" onclick="buyNow('Smart Watch Ultra',2999,29)">BUY NOW</button>
-<button class="btn btnCart" onclick="addCart('Smart Watch Ultra
+<button class="btn btnCart" onclick="addCart('Smart Watch Ultra',2999,29)">ADD CART</button>
+</div>
+</div>
+
+</div>
+
+<div id="order" class="page" style="display:none">
+<div class="header"><h2>📦 My Orders</h2></div>
+<div id="orderBox" style="margin-top:10px"></div>
+</div>
+
+<div id="cart" class="page" style="display:none">
+<div class="header"><h2>🛒 My Cart</h2></div>
+<div id="cartBox" style="margin-top:10px">Cart empty da Machi</div>
+<button id="cartBuyBtn" class="btn btnBuy" style="display:none;margin-top:15px;width:100%;padding:15px" onclick="buyFromCart()">CART BUY</button>
+</div>
+
+<div id="profile" class="page" style="display:none">
+<div class="header"><h2>👤 My Profile</h2><p id="pHi">Hi Machi!</p><p style="background:white;color:#0d47a1;display:inline-block;padding:5px 15px;border-radius:20px;margin-top:8px;font-weight:bold">Fund: ₹<span id="wTop">0</span></p></div>
+
+<div class="profileBtn" onclick="toggleBal()"><div><b>📚 My Education Fund</b><br><small>₹<span id="w2">0</span> - Tap</small></div><div>➡️</div></div>
+<div class="profileBtn" onclick="toggleAddr()" style="border-left-color:red"><div><b>📍 My Address</b><br><small id="addrMini">Add pannu</small></div><div>➡️</div></div>
+<div class="profileBtn" onclick="alert('Referral: STAR100')" style="border-left-color:green"><div><b
