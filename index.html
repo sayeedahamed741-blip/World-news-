@@ -1,45 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
-<title>STAR MOBILE - Official</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-*{box-sizing:border-box; font-family:Arial}
-body{margin:0; background:#f2f4f7}
-.cat{ background:white; border-radius:14px; padding:14px; text-align:center; box-shadow:0 2px 8px #0001}
-.cat:active{transform:scale(0.95)}
-.prod{background:white; border-radius:12px; padding:10px; box-shadow:0 2px 6px #0001}
-.btn{ background:#0d47a1; color:white; border:none; padding:8px 0; width:100%; border-radius:20px; font-weight:bold}
-</style>
+<meta charset='utf-8'/>
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<title><data:blog.pageTitle/></title>
+<b:skin><![CDATA[
+/* On The Way - Adsense Ready Theme */
+body{font-family: 'Noto Sans Tamil', sans-serif; margin:0; background:#f8f9fa; color:#222}
+.header{background:#111; color:#fff; padding:15px; text-align:center; position:sticky; top:0; z-index:99}
+.header h1{margin:0; font-size:24px; letter-spacing:1px}
+.header p{margin:2px 0 0; color:#ffb700; font-size:13px}
+.nav{background:#fff; padding:10px; text-align:center; box-shadow:0 2px 10px #0001}
+.nav a{margin:0 12px; text-decoration:none; color:#333; font-weight:600; font-size:14px}
+.container{max-width:800px; margin:20px auto; padding:0 15px}
+.post-card{background:#fff; border-radius:12px; padding:20px; margin-bottom:20px; box-shadow:0 2px 15px #0001}
+.post-card h2{margin:0 0 10px; font-size:20px}
+.post-card h2 a{text-decoration:none; color:#111}
+.meta{color:#888; font-size:12px; margin-bottom:10px}
+.ads-box{background:#fffbe6; border:1px dashed #ffb700; padding:15px; text-align:center; border-radius:8px; margin:20px 0; font-size:13px; color:#666}
+.footer{background:#111; color:#aaa; text-align:center; padding:20px; margin-top:30px; font-size:12px}
+]]></b:skin>
 </head>
 <body>
-
-<!-- HEADER -->
-<div style="background:#0d47a1; color:white; padding:14px 16px; position:sticky; top:0; z-index:99; border-radius:0 0 16px 16px;">
-<div style="display:flex; justify-content:space-between; align-items:center;">
-<h3 style="margin:0;">STAR MOBILE 🔥</h3>
-<div><span onclick="showCart()" style="background:white; color:#0d47a1; padding:6px 12px; border-radius:20px; font-weight:bold;">🛒 <span id="cartCount">0</span></span> <span onclick="showOrders()" style="background:#ffca28; color:black; padding:6px 10px; border-radius:20px; font-size:12px; margin-left:5px;">My Orders</span></div>
+<div class='header'>
+  <h1>ON THE WAY</h1>
+  <p>Tamil Travel Guide</p>
 </div>
-<input id="search" onkeyup="searchProd()" placeholder="Search product... 🔍" style="width:100%; padding:10px 14px; border-radius:25px; border:none; margin-top:12px;">
+<div class='nav'>
+  <a href='/'>Home</a>
+  <a href='/p/about-us.html'>About</a>
+  <a href='/p/contact-us.html'>Contact</a>
+  <a href='/search/label/Travel'>Travel</a>
 </div>
-
-<!-- HOME CATEGORIES -->
-<div id="home">
-<div style="padding:14px;">
-<p style="font-weight:bold; margin:5px 0;">Shop by Category 👇</p>
-<div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
-
-<div class="cat" onclick="openCat('Mobile')"><div style="font-size:28px;">📱</div><b style="font-size:13px;">Mobile</b></div>
-<div class="cat" onclick="openCat('Electronics')"><div style="font-size:28px;">🔋</div><b style="font-size:13px;">Battery & Acc</b></div>
-<div class="cat" onclick="openCat('Furniture')"><div style="font-size:28px;">🪑</div><b style="font-size:13px;">Furniture</b></div>
-<div class="cat" onclick="openCat('Toys')"><div style="font-size:28px;">🧸</div><b style="font-size:13px;">Toys</b></div>
-<div class="cat" onclick="openCat('Stationery')"><div style="font-size:28px;">📚</div><b style="font-size:13px;">Stationery</b></div>
-<div class="cat" onclick="openCat('Gift')"><div style="font-size:28px;">🎁</div><b style="font-size:13px;">Gift</b></div>
-
+<div class='container'>
+  <div class='ads-box'>Adsense Ad - On The Way - Top Ad Space</div>
+  <b:section class='main' id='main' showaddelement='yes'>
+    <b:widget id='Blog1' locked='false' title='Blog Posts' type='Blog'>
+      <b:includable id='main'>
+        <b:loop values='data:posts' var='post'>
+          <div class='post-card'>
+            <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+            <div class='meta'><data:post.date/> | On The Way Team</div>
+            <div class='post-body'><data:post.snippet/></div>
+          </div>
+        </b:loop>
+      </b:includable>
+    </b:widget>
+  </b:section>
+  <div class='ads-box'>Adsense Ad - Middle Content Ad</div>
 </div>
-
-<div style="background:#e3f2fd; border-left:4px solid #0d47a1; padding:10px; border-radius:8px; margin-top:14px;">
-<b>🎓 1% Education Fund</b><br><span style="font-size:12px;">Nenga vangura ovvoru order layum 1% education fund ku pogum da Machi! Unga cashback-a edukalam da!</span>
-</div>
-
-<h4 style="margin:18px 0 8px 0;">🔥 All Products</
+<div class='footer'>© 2026 On The Way Tamil | All Rights Reserved</div>
+</body>
+</html>
